@@ -1,0 +1,78 @@
+@import './base/mobile.less';
+
+html{
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0!important;  /*禁用border属性，通过onepx.less进行设置*/
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+  &:before,
+  &:after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+  }
+}
+
+body {
+  min-height: 100vh;
+}
+
+img {
+  content: normal !important; /*避免viewport-units-buggyfill的副作用*/
+}
+
+a {
+  text-decoration: none;
+  .setTapColor();
+  &:link {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+  }
+  &:active {
+    text-decoration: none;
+    outline: none;
+  }
+  &:focus {
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    color: inherit;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+textarea{
+  resize: none;
+  -webkit-appearance: none;
+}
+input, button, select{
+  -webkit-appearance: none;
+}
+
+div:focus{
+  outline: none;
+}
+
+input:focus,
+select,
+textarea:focus {
+  outline: 0;
+}

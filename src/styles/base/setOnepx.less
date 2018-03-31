@@ -1,0 +1,162 @@
+.setBorder(@c: #333) {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid @c;
+  color: @c;
+  z-index: 1;
+  @media only screen and (-Webkit-min-device-pixel-ratio: 1.5), 
+  only screen and (-moz-min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (min-device-pixel-ratio: 1.5) {
+    width: 150%;
+    height: 150%;
+    transform-origin: 0 0;
+    transform: scale(0.666);
+  }
+  @media only screen and (-Webkit-min-device-pixel-ratio: 2), 
+  only screen and (-moz-min-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2),
+  only screen and (min-device-pixel-ratio: 2) {
+    width: 200%;
+    height: 200%;
+    transform-origin: 0 0;
+    transform: scale(0.499);
+  }
+  @media only screen and (-Webkit-min-device-pixel-ratio: 3), 
+  only screen and (-moz-min-device-pixel-ratio: 3),
+  only screen and (-o-min-device-pixel-ratio: 3),
+  only screen and (min-device-pixel-ratio: 3) {
+    width: 300%;
+    height: 300%;
+    transform-origin: 0 0;
+    transform: scale(0.333);
+  }
+}
+
+.setBorderTop(@c: #333) {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid @c;
+  color: @c;
+  transform-origin: 0 0;
+  z-index: 1;
+  @media only screen and (-Webkit-min-device-pixel-ratio: 1.5), 
+  only screen and (-moz-min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (min-device-pixel-ratio: 1.5) {
+    transform: scaleY(0.666);
+  }
+  @media only screen and (-Webkit-min-device-pixel-ratio: 2), 
+  only screen and (-moz-min-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2),
+  only screen and (min-device-pixel-ratio: 2) {
+    transform: scaleY(0.5);
+  }
+  @media only screen and (-Webkit-min-device-pixel-ratio: 3), 
+  only screen and (-moz-min-device-pixel-ratio: 3),
+  only screen and (-o-min-device-pixel-ratio: 3),
+  only screen and (min-device-pixel-ratio: 3) {
+    transform: scaleY(0.333);
+  }
+}
+
+.setBorderBottom(@c: #333) {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1px solid @c;
+  color: @c;
+  transform-origin: 0 100%;
+  z-index: 1;
+  @media only screen and (-Webkit-min-device-pixel-ratio: 1.5), 
+  only screen and (-moz-min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (min-device-pixel-ratio: 1.5) {
+    transform: scaleY(0.666);
+  }
+  @media only screen and (-Webkit-min-device-pixel-ratio: 2), 
+  only screen and (-moz-min-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2),
+  only screen and (min-device-pixel-ratio: 2) {
+    transform: scaleY(0.5);
+  }
+  @media only screen and (-Webkit-min-device-pixel-ratio: 3), 
+  only screen and (-moz-min-device-pixel-ratio: 3),
+  only screen and (-o-min-device-pixel-ratio: 3),
+  only screen and (min-device-pixel-ratio: 3) {
+    transform: scaleY(0.333);
+  }
+}
+
+.setBorderLeft(@c: #333) {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  bottom: 0;
+  border-left: 1px solid @c;
+  color: @c;
+  transform-origin: 0 0;
+  z-index: 1;
+  @media only screen and (-Webkit-min-device-pixel-ratio: 1.5), 
+  only screen and (-moz-min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (min-device-pixel-ratio: 1.5) {
+    transform: scaleX(0.666);
+  }
+  @media only screen and (-Webkit-min-device-pixel-ratio: 2), 
+  only screen and (-moz-min-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2),
+  only screen and (min-device-pixel-ratio: 2) {
+    transform: scaleX(0.5);
+  }
+  @media only screen and (-Webkit-min-device-pixel-ratio: 3), 
+  only screen and (-moz-min-device-pixel-ratio: 3),
+  only screen and (-o-min-device-pixel-ratio: 3),
+  only screen and (min-device-pixel-ratio: 3) {
+    transform: scaleX(0.333);
+  }
+}
+
+.setBorderRight(@c: #333) {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  bottom: 0;
+  border-right: 1px solid @c;
+  color: @c;
+  transform-origin: 100% 0;
+  z-index: 1;
+  @media only screen and (-Webkit-min-device-pixel-ratio: 1.5), 
+  only screen and (-moz-min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (min-device-pixel-ratio: 1.5) {
+    transform: scaleX(0.666);
+  }
+  @media only screen and (-Webkit-min-device-pixel-ratio: 2), 
+  only screen and (-moz-min-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2),
+  only screen and (min-device-pixel-ratio: 2) {
+    transform: scaleX(0.5);
+  }
+  @media only screen and (-Webkit-min-device-pixel-ratio: 3), 
+  only screen and (-moz-min-device-pixel-ratio: 3),
+  only screen and (-o-min-device-pixel-ratio: 3),
+  only screen and (min-device-pixel-ratio: 3) {
+    transform: scaleX(0.333);
+  }
+}

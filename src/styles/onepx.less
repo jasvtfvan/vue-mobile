@@ -1,0 +1,44 @@
+@import './base/setOnepx.less';
+
+.vm-1px, .vm-1px-t, .vm-1px-b, .vm-1px-tb, .vm-1px-l, .vm-1px-r {
+  position: relative;
+}
+
+.vm-1px {
+  &:before {
+    .setBorder();
+  }
+}
+
+.vm-1px-t {
+  &:before {
+    .setBorderTop();
+  }
+}
+
+.vm-1px-b {
+  &:after {
+    .setBorderBottom();
+  }
+}
+
+.vm-1px-tb {
+  &:before {
+    .setBorderTop();
+  }
+  &:after {
+    .setBorderBottom();
+  }
+}
+
+.vm-1px-l {
+  &:before {
+    .setBorderLeft();
+  }
+}
+
+.vm-1px-r {
+  &:after {
+    .setBorderRight();
+  }
+}
