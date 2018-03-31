@@ -8,7 +8,7 @@
           <x-button type="primary" class="button">登录</x-button>
         </div>
         <br>
-        <h3>http://192.168.0.114:8080/#/</h3>
+        <h3 class="vm-1px-t">http://192.168.0.114:8080/#/</h3>
     </div>
 </template>
 <script>

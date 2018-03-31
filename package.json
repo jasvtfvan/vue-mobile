@@ -13,6 +13,7 @@
   "dependencies": {
     "cssnano": "^3.10.0",
     "fastclick": "^1.0.6",
+    "js-cookie": "^2.2.0",
     "postcss-aspect-ratio-mini": "0.0.2",
     "postcss-cssnext": "^3.1.0",
     "postcss-px-to-viewport": "0.0.3",
@@ -59,6 +60,7 @@
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
+    "vuex-router-sync": "^5.0.0",
     "vux-loader": "^1.2.6",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",

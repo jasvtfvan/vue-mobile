@@ -1,17 +1,28 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createLogger from 'vuex/dist/logger'
+import user from '@/store/modules/user'
+import getters from '@/store/getters'
+import { VUX_LOADING } from '@/constants/publicTypes'
 
+const debug = process.env.NODE_ENV !== 'production'
 Vue.use(Vuex)
 
-//通过vux添加页面loadding
-const store = new Vuex.Store({})
+const store = new Vuex.Store({
+  modules: {
+    user
+  },
+  getters,
+  plugins: debug ? [createLogger()] : []
+})
 
+//通过vux添加页面loadding
 store.registerModule('vux', {
   state: {
     isLoading: false
   },
   mutations: {
-    updateLoadingStatus (state, payload) {
+    [VUX_LOADING](state, payload) {
       state.isLoading = payload.isLoading
     }
   }
