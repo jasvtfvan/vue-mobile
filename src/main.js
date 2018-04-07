@@ -5,13 +5,21 @@ import App from '@/App'
 import router from '@/router'
 import store from '@/store/index'
 import FastClick from 'fastclick'
+import { ToastPlugin, AlertPlugin } from 'vux'
+import {useMock} from '@/config'
+if (useMock) {
+  require('@/mock')
+}
 
+import 'vux/src/styles/reset.less'
 import '@/styles/index.less'
 
 FastClick.attach(document.body)
+Vue.use(ToastPlugin)
+Vue.use(AlertPlugin)
+
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
@@ -19,3 +27,5 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+export const $vux = Vue.$vux;

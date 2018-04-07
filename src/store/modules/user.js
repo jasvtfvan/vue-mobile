@@ -5,17 +5,20 @@ import { LOGIN, LOGOUT, GET_USER_INFO } from '@/constants/apiTypes';
 const user = {
   state: {
     token: getToken(),
-    userInfo: {}
+    isLogin: false,
+    userInfo: {},
   },
   mutations: {
     [LOGIN](state, data) {
       state.token = data;
       setToken(data);
+      state.isLogin = true;
     },
     [LOGOUT](state, data) {
-      state.token = null;
-      state.userInfo = {};
       removeToken();
+      state.token = null;
+      state.isLogin = false;
+      state.userInfo = {};
     },
     [GET_USER_INFO](state, data) {
       state.userInfo = data;
@@ -23,15 +26,18 @@ const user = {
   },
   actions: {
     [LOGIN]({commit}, data) {
-      return login(data).then((res) => {
+      return login(data.username, data.password)
+      .then((res) => {
         if (res.success) {
           commit(LOGIN, res.data);
         }
+        return res;
       });
     },
     [LOGOUT]({commit, state}) {
-      return logout(state.token).then(res => {
+      return logout().then(res => {
         commit(LOGOUT);
+        return res;
       });
     },
     [GET_USER_INFO]({commit}) {
@@ -39,6 +45,7 @@ const user = {
         if (res.success) {
           commit(GET_USER_INFO, res.data);
         }
+        return res;
       });
     }
   }

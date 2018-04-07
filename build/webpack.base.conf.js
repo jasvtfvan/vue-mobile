@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const utils = require('./utils')
+const webpack = require('webpack')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const vuxLoader = require('vux-loader')
@@ -77,7 +78,12 @@ let webpackConfig = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      _: 'lodash'
+    }),
+  ]
 }
 
 module.exports = vuxLoader.merge(webpackConfig, {
@@ -86,6 +92,6 @@ module.exports = vuxLoader.merge(webpackConfig, {
     {
       name: 'less-theme',
       path: 'src/styles/theme.less'
-    }
+    },
   ]
 })

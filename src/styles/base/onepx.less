@@ -6,39 +6,207 @@
 
 .vm-1px {
   &:before {
-    .setBorder();
+    .setBorder(#d4d4d4);
+  }
+}
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), 
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+  .vm-1px:before{
+    width: 150%;
+    height: 150%;
+    transform-origin: 0 0;
+    transform: scale(0.666);
+  }
+}
+@media only screen and (-Webkit-min-device-pixel-ratio: 2), 
+only screen and (-moz-min-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2),
+only screen and (min-device-pixel-ratio: 2) {
+  .vm-1px:before{
+    width: 200%;
+    height: 200%;
+    transform-origin: 0 0;
+    transform: scale(0.499);
+  }
+}
+@media only screen and (-Webkit-min-device-pixel-ratio: 3), 
+only screen and (-moz-min-device-pixel-ratio: 3),
+only screen and (-o-min-device-pixel-ratio: 3),
+only screen and (min-device-pixel-ratio: 3) {
+  .vm-1px:before{
+    width: 300%;
+    height: 300%;
+    transform-origin: 0 0;
+    transform: scale(0.333);
   }
 }
 
 .vm-1px-t {
   &:before {
-    .setBorderTop();
+    .setBorderTop(#d4d4d4);
+  }
+}
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), 
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+  .vm-1px-t:before{
+    transform: scaleY(0.666);
+  }
+}
+@media only screen and (-Webkit-min-device-pixel-ratio: 2), 
+only screen and (-moz-min-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2),
+only screen and (min-device-pixel-ratio: 2) {
+  .vm-1px-t:before{
+    transform: scaleY(0.5);
+  }
+}
+@media only screen and (-Webkit-min-device-pixel-ratio: 3), 
+only screen and (-moz-min-device-pixel-ratio: 3),
+only screen and (-o-min-device-pixel-ratio: 3),
+only screen and (min-device-pixel-ratio: 3) {
+  .vm-1px-t:before{
+    transform: scaleY(0.333);
   }
 }
 
 .vm-1px-b {
   &:after {
-    .setBorderBottom();
+    .setBorderBottom(#d4d4d4);
+  }
+}
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), 
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+  .vm-1px-b:after{
+    transform: scaleY(0.666);
+  }
+}
+@media only screen and (-Webkit-min-device-pixel-ratio: 2), 
+only screen and (-moz-min-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2),
+only screen and (min-device-pixel-ratio: 2) {
+  .vm-1px-b:after{
+    transform: scaleY(0.5);
+  }
+}
+@media only screen and (-Webkit-min-device-pixel-ratio: 3), 
+only screen and (-moz-min-device-pixel-ratio: 3),
+only screen and (-o-min-device-pixel-ratio: 3),
+only screen and (min-device-pixel-ratio: 3) {
+  .vm-1px-b:after{
+    transform: scaleY(0.333);
   }
 }
 
 .vm-1px-tb {
   &:before {
-    .setBorderTop();
+    .setBorderTop(#d4d4d4);
   }
   &:after {
-    .setBorderBottom();
+    .setBorderBottom(#d4d4d4);
+  }
+}
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), 
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+  .vm-1px-tb:before{
+    transform: scaleY(0.666);
+  }
+  .vm-1px-tb:after{
+    transform: scaleY(0.666);
+  }
+}
+@media only screen and (-Webkit-min-device-pixel-ratio: 2), 
+only screen and (-moz-min-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2),
+only screen and (min-device-pixel-ratio: 2) {
+  .vm-1px-tb:before{
+    transform: scaleY(0.5);
+  }
+  .vm-1px-tb:after{
+    transform: scaleY(0.5);
+  }
+}
+@media only screen and (-Webkit-min-device-pixel-ratio: 3), 
+only screen and (-moz-min-device-pixel-ratio: 3),
+only screen and (-o-min-device-pixel-ratio: 3),
+only screen and (min-device-pixel-ratio: 3) {
+  .vm-1px-tb:before{
+    transform: scaleY(0.333);
+  }
+  .vm-1px-tb:after{
+    transform: scaleY(0.333);
   }
 }
 
 .vm-1px-l {
   &:before {
-    .setBorderLeft();
+    .setBorderLeft(#d4d4d4);
+  }
+}
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), 
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+  .vm-1px-l:before{
+    transform: scaleX(0.666);
+  }
+}
+@media only screen and (-Webkit-min-device-pixel-ratio: 2), 
+only screen and (-moz-min-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2),
+only screen and (min-device-pixel-ratio: 2) {
+  .vm-1px-l:before{
+    transform: scaleX(0.5);
+  }
+}
+@media only screen and (-Webkit-min-device-pixel-ratio: 3), 
+only screen and (-moz-min-device-pixel-ratio: 3),
+only screen and (-o-min-device-pixel-ratio: 3),
+only screen and (min-device-pixel-ratio: 3) {
+  .vm-1px-l:before{
+    transform: scaleX(0.333);
   }
 }
 
 .vm-1px-r {
   &:after {
-    .setBorderRight();
+    .setBorderRight(#d4d4d4);
+  }
+}
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), 
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+  .vm-1px-r:after{
+    transform: scaleX(0.666);
+  }
+}
+@media only screen and (-Webkit-min-device-pixel-ratio: 2), 
+only screen and (-moz-min-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2),
+only screen and (min-device-pixel-ratio: 2) {
+  .vm-1px-r:after{
+    transform: scaleX(0.5);
+  }
+}
+@media only screen and (-Webkit-min-device-pixel-ratio: 3), 
+only screen and (-moz-min-device-pixel-ratio: 3),
+only screen and (-o-min-device-pixel-ratio: 3),
+only screen and (min-device-pixel-ratio: 3) {
+  .vm-1px-r:after{
+    transform: scaleX(0.333);
   }
 }

@@ -1,33 +1,100 @@
 <template>
-    <div class="box">
-        <group title="登录" label-width="4em" label-margin-right="2em" label-align="justify">
-          <x-input title="账号" placeholder="必填" v-model="username"></x-input>
-          <x-input title="密码" type="password" placeholder="必填" v-model="password"></x-input>
-        </group>
-        <div class="bt-wp">
-          <x-button type="primary" class="button">登录</x-button>
-        </div>
-        <br>
-        <h3 class="vm-1px-t">http://192.168.0.114:8080/#/</h3>
-    </div>
+<div class="login">
+  <!-- 内容开始 -->
+  <article class="bind">
+    <section class="bind-con">
+      <ul>
+        <li class="vm-1px-b"> <i class="username-ico"></i>
+          <input name="username" type="text" class="input-name" placeholder="请输入姓名" v-model="username" />
+        </li>
+        <li class="vm-1px-b"> <i class="password-ico"></i>
+          <input name="password" type="password" class="input-password" placeholder="请输入密码" v-model="password" />
+        </li>
+      </ul>
+      <div class="butn"><a href="javascript:;" class="btnType1" @click="login">登录</a></div>
+    </section>
+  </article>
+  <!-- 内容结束 -->
+</div>
 </template>
 <script>
-import '@/styles/modules/login.less';
-import {Group, XInput, XButton, Box} from 'vux';
+import {mapActions} from 'vuex';
+import {LOGIN} from '@/constants/apiTypes';
+
+import schema  from 'async-validator';
+import sanitize from 'validator';
+const descriptor = {
+  username: [
+    {type: "string", required: true, message: '账号为必填项'},
+    {min: 3, max: 20, message: '账号长度在3~20之间'},
+    {
+      pattern: /^[a-z0-9]+$/, 
+      transform(value) {
+        return sanitize.trim(value);
+      },
+      message: '账号只能由小写英文字母或数字组成'
+    }
+  ],
+  password: [
+    {type: "string", required: true, message: '密码为必填项'},
+    {min: 3, max: 20, message: '密码长度在3~20之间'},
+    {
+      validator(rule, value, callback, source, options) {
+        if(!/^[a-z0-9]+$/.test(value)) {
+          callback(rule.message);
+        }
+        callback();
+      },
+      message: '密码不符合规则'
+    }
+  ],
+};
+const validator = new schema(descriptor);
+
 export default {
   components:{
-    Group,
-    XInput,
-    XButton,
-    Box
   },
   data() {
     return {
-      "username": "",
-      "password": "",
+      username: "",
+      password: "",
     }
   },
   methods: {
+    ...mapActions([LOGIN]),
+    login() {
+      const _this = this;
+      validator.validate({
+        username: _this.username,
+        password: _this.password
+      }, (errors, fields) => {
+        if(errors) {
+          _this.$vux.toast.show({
+            text: errors[0]['message'] || '表单输入有误',
+            type: 'text'
+          });
+          return;
+        }
+        _this[LOGIN]({
+          username: _this.username, 
+          password: _this.password
+        }).then((res) => {
+          console.log('login:::res:::', res);
+          if (res.success) {
+            _this.$vux.toast.show({
+              text: '登录成功',
+              type: 'success'
+            });
+            _this.$router.push({path: 'home'});
+          }
+        }).catch(error => {
+          console.log('login.vue:::error:::', error);
+        });
+      });
+    }
   }
 }
 </script>
+<style lang="less" scoped>
+  @import '~@/styles/modules/login.less';
+</style>

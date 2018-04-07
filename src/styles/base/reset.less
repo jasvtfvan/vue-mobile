@@ -21,8 +21,12 @@ html{
   }
 }
 
-body {
-  min-height: 100vh;
+body{
+  background: #eee;
+  height: 100%;
+  width: 100vw;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 img {
@@ -75,4 +79,17 @@ input:focus,
 select,
 textarea:focus {
   outline: 0;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
+color: #c2c2c2;
+}
+input:-moz-placeholder, textarea:-moz-placeholder { 
+color: #c2c2c2;
+}
+input::-moz-placeholder, textarea::-moz-placeholder { 
+color: #c2c2c2;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
+color: #c2c2c2;
 }

@@ -1,9 +1,103 @@
-.box{
-  padding: 10px;
-  .bt-wp{
-    padding-top: 15px;
+@import '../mixin.less';
+
+.login{
+  padding: 25px 20px 20px 20px;
+  background: #eee;
+  height: 100%;
+}
+.bind{
+  height: 100%; 
+  width:auto; 
+  background:#fff; 
+  border-radius:3px;
+}
+.bind-con{
+  height:auto; 
+  margin:0 auto; 
+  padding-top:240px;
+  ul{
+    width:580px; 
+    margin-left:auto; 
+    margin-right:auto;
+    li{
+      text-align: left; 
+      white-space: nowrap; 
+      height:102px; 
+      line-height: 102px; 
+      position: relative; 
+      clear: both; 
+      margin-bottom:48px; 
+      border-bottom: 1px solid #d4d4d4; 
+      color: #898989;
+      input[type="checkbox"]{
+        width: auto;
+      }
+      &:hover{
+        border-bottom: 1px solid #20cb7c;
+      }
+    }
   }
-  h3{
-    text-align: center;
+  .input-name, .input-password{
+    height: 70px; 
+    border:0; 
+    position: relative; 
+    color: #999; 
+    font-size:32px; 
+    font-weight:100; 
+    padding-left: 90px;
+  }
+  .butn{
+    width:640px; 
+    height:87px; 
+    line-height:87px; 
+    font-size:34px; 
+    color:#fff; 
+    text-align:center; 
+    margin-left:auto; 
+    margin-right:auto; 
+    margin-top:208px;
+  }
+}
+.username-ico{
+  display: inline-block; 
+  width: 54px; 
+  height: 54px; 
+  position: absolute; 
+  top: 16px; 
+  left: 0; 
+  .bg-img('~@/assets/bind-ico1');
+  background: no-repeat center center; 
+  background-size: 54px 54px; 
+  z-index:10;
+}
+.password-ico{
+  display: inline-block; 
+  width: 54px; 
+  height: 54px; 
+  position: absolute; 
+  top: 20px; 
+  left: 0; 
+  .bg-img('~@/assets/bind-ico2');
+  background: no-repeat center center; 
+  background-size: 54px 54px; 
+  z-index:10;
+}
+/*-Type-*/
+a{
+  &.btnType1{
+    display:block; 
+    background:#06be6b; 
+    border-radius:6px; 
+    color:#fff; 
+    text-decoration:none; 
+    cursor:pointer; 
+    font-size:34px; 
+    margin-left:auto; 
+    margin-right:auto;
+    &:hover{
+      background:#089555; 
+      color:#fff; 
+      text-decoration:none;
+    }
   }
 }
