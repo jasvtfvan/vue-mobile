@@ -5,5 +5,5 @@ const prodEnv = require('./prod.env')
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
   BASE_URL: JSON.stringify(process.env.npm_config_baseurl) || '"http://localhost.dev/mock"',
-  USER_MOCK: JSON.stringify(process.env.npm_config_usemock ? true : false)
+  USER_MOCK: JSON.stringify(process.env.npm_config_mock ? true : false)
 })

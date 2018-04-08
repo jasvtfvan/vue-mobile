@@ -4,6 +4,7 @@ import routers from '@/router/routers'
 import store from '@/store/index'
 import { sync } from 'vuex-router-sync'
 import { VUX_LOADING } from '@/constants/publicTypes'
+import { LOGOUT } from '@/constants/apiTypes'
 
 Vue.use(VueRouter)
 
@@ -14,8 +15,24 @@ const router = new VueRouter({
 sync(store, router)
 
 router.beforeEach(function (to, from, next) {
+  store.commit(VUX_LOADING, {isLoading: false}) //释放上次被拦截的跳转
   store.commit(VUX_LOADING, {isLoading: true})
-  next()
+  if (to.matched.some(r => r.meta && r.meta.white)) { //白名单
+    if (to.name.toLowerCase == 'login') {
+      store.commit(LOGOUT)
+    }
+    next()
+  } else {
+    if (store.getters.token) {
+      next()
+    } else {
+      next({
+        path: '/',
+        query: {redirect: to.fullPath},
+        replace: true
+      })
+    }
+  }
 })
 router.afterEach(function (to) {
   store.commit(VUX_LOADING, {isLoading: false})

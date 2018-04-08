@@ -5,7 +5,7 @@ import {VUX_LOADING} from '@/constants/publicTypes';
 import {LOGOUT} from '@/constants/apiTypes';
 import router from '@/router';
 const baseURL = process.env.BASE_URL;
-const useMock = process.env.USER_MOCK;
+const mock = process.env.USER_MOCK;
 
 axios.defaults.timeout = 2 * 60 * 1000;
 axios.defaults.baseURL = baseURL;
@@ -50,7 +50,7 @@ axios.interceptors.request.use(
     config['isAuth'] = _.isUndefined(config['isAuth']) ? true : !!config['isAuth'];
     if (config['isAuth']) {
       config.headers[config.method]['Authorization'] = store.getters.token;
-      if (useMock) { //如果使用mock,则将token放到data中，便于mock接收
+      if (mock) { //如果使用mock,则将token放到data中，便于mock接收
         config.data['Authorization'] = store.getters.token;
       }
     }

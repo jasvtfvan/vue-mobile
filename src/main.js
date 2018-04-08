@@ -7,8 +7,8 @@ import store from '@/store/index'
 import FastClick from 'fastclick'
 import { ToastPlugin, AlertPlugin } from 'vux'
 
-const useMock = process.env.USER_MOCK
-if (useMock) {
+const mock = process.env.USER_MOCK
+if (mock) {
   require('@/mock')
 }
 

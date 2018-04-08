@@ -7,7 +7,10 @@ export default
   {
     path: '/',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: {
+      white: true,
+    },
   },
   {
     path: '/home',
