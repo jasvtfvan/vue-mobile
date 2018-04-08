@@ -4,7 +4,8 @@ import store from '@/store';
 import {VUX_LOADING} from '@/constants/publicTypes';
 import {LOGOUT} from '@/constants/apiTypes';
 import router from '@/router';
-import {baseURL, useMock} from '@/config';
+const baseURL = process.env.BASE_URL;
+const useMock = process.env.USER_MOCK;
 
 axios.defaults.timeout = 2 * 60 * 1000;
 axios.defaults.baseURL = baseURL;

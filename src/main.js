@@ -6,7 +6,8 @@ import router from '@/router'
 import store from '@/store/index'
 import FastClick from 'fastclick'
 import { ToastPlugin, AlertPlugin } from 'vux'
-import {useMock} from '@/config'
+
+const useMock = process.env.USER_MOCK
 if (useMock) {
   require('@/mock')
 }
@@ -15,11 +16,11 @@ import 'vux/src/styles/reset.less'
 import '@/styles/index.less'
 
 FastClick.attach(document.body)
+
 Vue.use(ToastPlugin)
 Vue.use(AlertPlugin)
 
 Vue.config.productionTip = false
-
 new Vue({
   el: '#app',
   router,

@@ -1,7 +1,7 @@
 import Mock from 'mockjs';
 import userController from './modules/user';
 import { LOGIN, LOGOUT, GET_USER_INFO } from '@/constants/apiTypes';
-import {baseURL} from '@/config';
+const baseURL = process.env.BASE_URL;
 
 Mock.setup({ timeout: '500-2000' });
 
