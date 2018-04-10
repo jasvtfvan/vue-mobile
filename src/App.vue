@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" ref="app">
     <div v-transfer-dom>
       <loading v-model="isLoading"></loading>
     </div>
@@ -10,6 +10,7 @@
 <script>
 import { Loading, TransferDom } from 'vux'
 import { mapState } from 'vuex'
+import OverPull from '@/utils/overPull'
 
 export default {
   directives: {
@@ -22,12 +23,18 @@ export default {
     ...mapState({
       isLoading: state => state.vux.isLoading
     })
+  },
+  created() {
+    OverPull.init('#app');
   }
 }
 </script>
 <style lang="less">
   #app{
-    background: inherit;
     height: 100%;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 </style>

@@ -15,7 +15,6 @@ const router = new VueRouter({
 sync(store, router)
 
 router.beforeEach(function (to, from, next) {
-  store.commit(VUX_LOADING, {isLoading: false}) //释放上次被拦截的跳转
   store.commit(VUX_LOADING, {isLoading: true})
   if (to.matched.some(r => r.meta && r.meta.white)) { //白名单
     if (to.name.toLowerCase == 'login') {
@@ -31,6 +30,7 @@ router.beforeEach(function (to, from, next) {
         query: {redirect: to.fullPath},
         replace: true
       })
+      store.commit(VUX_LOADING, {isLoading: false})
     }
   }
 })

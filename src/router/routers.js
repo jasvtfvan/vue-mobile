@@ -20,6 +20,9 @@ export default
   {
     path: '/vw',
     name: 'VwLayout',
-    component: VwLayout
+    component: VwLayout,
+    meta: {
+      white: true,
+    },
   }
 ]
