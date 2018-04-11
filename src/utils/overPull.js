@@ -1,19 +1,33 @@
 /**
  * ios微信浏览器，防止过度下拉（或上拉）露出微信黑色背景
+ * @description 方案基础样式说明：
+ * body{
+ *  height: 100%;width: 100vw;overflow: hidden;
+ *  #app{
+ *    height: 100%;width: 100%;
+ *    overflow: hidden;overflow-y: auto;
+ *    -webkit-overflow-scrolling: touch;
+ *    .template-root{ //vue文件模板根，可以不写，这里便于理解
+ *      height: auto;  //可以不写，这里便于理解
+ *    }
+ *  }
+ * }
  */
 
-let options = {	//不使用上下文，避免上下文暴露
-  OVER_TOP: 1,  //scrollTop在OVER_TOP内被认为达到顶部
+let options = {
+  BELOW_TOP: 1,  //scrollTop在BELOW_TOP内被认为达到顶部
+  OVER_BOTTOM: 1, //scrollBottom在OVER_BOTTOM内被认为到达底部
 };
 
 /*
 * 避免重复声明基础变量，避免不必要的内存浪费
 */
-let state = { //不使用上下文，避免上下文暴露
+let state = {
   startY: 0,  //起始位置y
 };
 
-let selector = 'body';  //dom对象selector
+// let wrapper = 'body';  //dom对象wrapper
+let container = '#app'; //容器dom，wrapper的子类
 
 /**
  * 定义OverPull对象
@@ -24,10 +38,10 @@ const OverPull = {
     if (!iphone()) {
       return;
     }
-    const self = this;
     if (selector) {
-      selector = selector;
+      container = selector;
     }
+    const self = this;
     options = Object.assign(options, opts);
     self.addTouchStart();
     self.addTouchMove();
@@ -71,12 +85,23 @@ function touchStartFunc (evt) {
 /**
  * touchMove方法，该方法必须单独声明，才能有效removeEventListener
  * @param {*} evt 
+ * @description 举例说明算法：
+ * #app高度为480,#app的scrollTop是距离顶部的距离,
+ * #app的firstChild高度为2157
+ * 判断到达(或超过)底部 480 + scrollTop - 2157 >= 0 + 误差变量
  */
 function touchMoveFunc (evt) {
   const nextY = evt.changedTouches[0].clientY;
-  const scrollTop = document.querySelector(selector).scrollTop;
-  if (scrollTop < options.OVER_TOP && nextY >= state.startY) {
-    state.startY = nextY;
+  const el = document.querySelector(container);
+  const scrollTop = el.scrollTop;
+  const offsetHeight = el.offsetHeight;
+  if (scrollTop < options.BELOW_TOP && nextY >= state.startY) {
+    evt.preventDefault();
+  }
+  const elChild = el.children[0];
+  const childHeight = elChild.offsetHeight;
+  const remainHeight = scrollTop + offsetHeight - childHeight;
+  if (remainHeight >= options.OVER_BOTTOM && nextY <= state.startY) {
     evt.preventDefault();
   }
   state.startY = nextY;

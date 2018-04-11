@@ -25,7 +25,7 @@ export default {
     })
   },
   created() {
-    OverPull.init('#app');
+    OverPull.init();
   }
 }
 </script>
