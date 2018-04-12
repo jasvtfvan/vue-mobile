@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "async-validator": "^1.8.2",
+    "babel-polyfill": "^6.26.0",
     "cssnano": "^3.10.0",
     "fastclick": "^1.0.6",
     "js-cookie": "^2.2.0",

@@ -5,6 +5,7 @@ import App from '@/App'
 import router from '@/router'
 import store from '@/store/index'
 import FastClick from 'fastclick'
+import 'babel-polyfill'
 import { ToastPlugin, AlertPlugin } from 'vux'
 
 const mock = process.env.USER_MOCK

@@ -100,8 +100,8 @@ function touchMoveFunc (evt) {
   }
   const elChild = el.children[0];
   const childHeight = elChild.offsetHeight;
-  const remainHeight = scrollTop + offsetHeight - childHeight;
-  if (remainHeight >= options.OVER_BOTTOM && nextY <= state.startY) {
+  const remainHeight = childHeight - (scrollTop + offsetHeight);
+  if (remainHeight <= options.OVER_BOTTOM && nextY <= state.startY) {
     evt.preventDefault();
   }
   state.startY = nextY;
