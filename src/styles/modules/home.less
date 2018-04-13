@@ -21,11 +21,20 @@
     float: left; 
     text-align: center; 
     box-sizing: border-box;
+    &:nth-of-type(odd){
+      span{
+        color: #50ba53;
+      }
+    }
+    &:nth-of-type(even){
+      span{
+        color: #00beda;
+      }
+    }
   }
   span{
-    display: block; 
-    color: #353535; 
-    font-size:34px;
+    display: block;
+    font-size:100px;
   }
   li{
     width:25%; 

@@ -7,37 +7,40 @@
       <a href="javascript:;" class="btnType1 logout" @click="logout">退出</a>
     </section>
     <section class="index-main vm-1px-tb">
-      <a href="javascript:;" class="vm-1px-r">
-          <span>a</span>
+      <a href="javascript:;" class="vm-1px-r iconfont">
+          <span class="icon-smile"></span>
       </a>
-      <a href="javascript:;" class="vm-1px-r">
-          <span>b</span>
+      <a href="javascript:;" class="vm-1px-r iconfont">
+          <span class="icon-atm"></span>
       </a>
-      <a href="javascript:;" class="vm-1px-r">
-          <span>c</span>
+      <a href="javascript:;" class="vm-1px-r iconfont">
+          <span class="icon-service"></span>
       </a>
-      <a href="javascript:;">
-          <span>d</span>
+      <a href="javascript:;" class="iconfont">
+          <span class="icon-rfq1"></span>
       </a>
     </section>
     <section class="index-main vm-1px-b">
       <ul>
-      <li class="vm-1px-r">
-          <a href="javascript:;" class="btnType1" @click="getUserInfo">用户信息</a>
-      </li>
-      <li class="vm-1px-r">
-          <a href="javascript:;" class="btnType1">按钮2</a>
-      </li>
-      <li class="vm-1px-r">
-          <a href="javascript:;" class="btnType1">按钮3</a>
-      </li>
-      <li>
-          <a href="javascript:;" class="btnType1">按钮4</a>
-      </li>
+        <li class="vm-1px-r">
+            <a href="javascript:;" class="btnType1" @click="getUserInfo">用户信息</a>
+        </li>
+        <li class="vm-1px-r">
+            <a href="javascript:;" class="btnType1">按钮2</a>
+        </li>
+        <li class="vm-1px-r">
+            <a href="javascript:;" class="btnType1">按钮3</a>
+        </li>
+        <li>
+            <a href="javascript:;" class="btnType1">按钮4</a>
+        </li>
       </ul>
     </section>
   </article>
   <!-- 内容结束 -->
+  <footer>
+
+  </footer>
 </div>
 </template>
 
