@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'
 import user from '@/store/modules/user'
+import menu from '@/store/modules/menu'
 import getters from '@/store/getters'
 import { VUX_LOADING } from '@/constants/publicTypes'
 
@@ -10,7 +11,8 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
-    user
+    user,
+    menu
   },
   getters,
   plugins: debug ? [createLogger()] : []

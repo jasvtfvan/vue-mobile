@@ -7,13 +7,13 @@
       <a href="javascript:;" class="btnType1 logout" :style="exitStyle" @click="logout">退出</a>
     </section>
     <section class="index-main vm-1px-tb">
-      <a href="javascript:;" class="vm-1px-r iconfont">
+      <a href="javascript:;" class="iconfont">
           <span class="icon-smile"></span>
       </a>
-      <a href="javascript:;" class="vm-1px-r iconfont">
+      <a href="javascript:;" class="iconfont">
           <span class="icon-atm"></span>
       </a>
-      <a href="javascript:;" class="vm-1px-r iconfont">
+      <a href="javascript:;" class="iconfont">
           <span class="icon-service"></span>
       </a>
       <a href="javascript:;" class="iconfont">
@@ -22,17 +22,17 @@
     </section>
     <section class="index-main vm-1px-b">
       <ul>
-        <li class="vm-1px-r">
+        <li>
             <a href="javascript:;" class="btnType1" @click="getUserInfo">用户信息</a>
         </li>
-        <li class="vm-1px-r">
-            <a href="javascript:;" class="btnType1">按钮2</a>
-        </li>
-        <li class="vm-1px-r">
-            <a href="javascript:;" class="btnType1">按钮3</a>
+        <li>
+            <router-link href="javascript:;" class="btnType1" :to="{path: 'vw'}">vwlayout</router-link>
         </li>
         <li>
-            <a href="javascript:;" class="btnType1">按钮4</a>
+            <a href="javascript:;" class="btnType1">scroll1</a>
+        </li>
+        <li>
+            <a href="javascript:;" class="btnType1">scroll2</a>
         </li>
       </ul>
     </section>
@@ -105,6 +105,7 @@ export default {
 </script>
 <style lang="less" scoped>
   @import '~@/styles/modules/home.less';
+  @import '~@/styles/base/mobile.less';
   .logout{
     width:140px; 
     height:56px; 
@@ -124,5 +125,8 @@ export default {
       text-decoration:none;
       font-size:32px;
     }
+  }
+  a.iconfont{
+    .setTapColor(rgba(0,0,0,0));
   }
 </style>

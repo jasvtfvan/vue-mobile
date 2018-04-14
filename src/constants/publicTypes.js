@@ -4,3 +4,4 @@
  */
 
 export const VUX_LOADING = 'updateLoadingStatus';
+export const SWITCH_MENU = 'switch_menu';
