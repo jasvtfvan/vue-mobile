@@ -16,7 +16,7 @@ if (mock) {
 import 'vux/src/styles/reset.less'
 import '@/styles/index.less'
 
-FastClick.attach(document.body)
+// FastClick.attach(document.body)
 
 Vue.use(ToastPlugin)
 Vue.use(AlertPlugin)

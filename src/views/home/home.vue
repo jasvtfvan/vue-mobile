@@ -121,14 +121,8 @@ export default {
       background:#00beda; 
       border-radius:6px; 
       color:#fff; 
-      text-decoration:none; 
-      cursor:pointer; 
-      font-size:32px; 
-      &:hover{
-        background:#089555; 
-        color:#fff; 
-        text-decoration:none;
-      }
+      text-decoration:none;
+      font-size:32px;
     }
   }
 </style>
