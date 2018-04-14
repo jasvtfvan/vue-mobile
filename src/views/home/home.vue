@@ -4,7 +4,7 @@
   <article>
     <section class="index-top">
       <img :src = 'logoSrc' >
-      <a href="javascript:;" class="btnType1 logout" @click="logout">退出</a>
+      <a href="javascript:;" class="btnType1 logout" :style="exitStyle" @click="logout">退出</a>
     </section>
     <section class="index-main vm-1px-tb">
       <a href="javascript:;" class="vm-1px-r iconfont">
@@ -38,21 +38,32 @@
     </section>
   </article>
   <!-- 内容结束 -->
-  <footer>
-
-  </footer>
+  <vm-footer></vm-footer>
 </div>
 </template>
 
 <script>
+import VmFooter from '@/components/common/vmFooter';
 import getDpr from '@/utils/getDpr';
 import {mapActions} from 'vuex';
 import {LOGOUT, GET_USER_INFO} from '@/constants/apiTypes';
 export default {
+  components: {
+    VmFooter
+  },
   name: 'home',
   data() {
     return{
       logoSrc: null,
+      isExiting: false,
+      exitStyle: {
+        background: '#00beda'
+      }
+    }
+  },
+  watch: {
+    isExiting: function (newVal, preVal) {
+      this.exitStyle.background = this.isExiting ? '#50ba53' : '#00beda';
     }
   },
   created(){
@@ -64,11 +75,15 @@ export default {
   methods: {
     ...mapActions([LOGOUT, GET_USER_INFO]),
     logout() {
+      this.isExiting = true;
       this[LOGOUT]().then(res => {
+        this.isExiting = false;
         this.$router.replace({path: '/'}, () => {
           this.$vux.toast.show('成功退出!');
           // location.reload();
         });
+      }).catch(() => {
+        this.isExiting = false;
       });
     },
     getUserInfo() {
