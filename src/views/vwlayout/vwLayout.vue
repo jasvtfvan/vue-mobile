@@ -1,5 +1,6 @@
 <template>
   <div vw-layout>
+    <vm-header />
     <banner />
     <grid />
     <block />
@@ -8,6 +9,7 @@
 </template>
 
 <script>
+import VmHeader from '@/components/common/vmHeader';
 import banner from '@/views/vwlayout/banner';
 import grid from '@/views/vwlayout/grid';
 import block from '@/views/vwlayout/block';
@@ -16,6 +18,7 @@ import list from '@/views/vwlayout/list';
 export default {
   name: 'App',
   components: {
+    VmHeader,
     banner,
     grid,
     block,
@@ -26,6 +29,7 @@ export default {
 
 <style lang="less" scoped>
 [vw-layout]{
+  margin-top: 110px;
   background-color: #f4f4f4;
 }
 /deep/ img {

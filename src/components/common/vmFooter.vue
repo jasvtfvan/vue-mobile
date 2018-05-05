@@ -18,7 +18,7 @@
     </a>
     <a href="javascript:;" :class="{active: index === 4}" class="iconfont" @click="switchMenu(4);goPhoneBook()">
       <i class="icon-account"></i>
-      <span>我的</span>
+      <span>通讯录</span>
     </a>
 </footer>
 </template>
