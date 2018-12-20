@@ -2,8 +2,9 @@
   <header class="vm-1px-b">
     <a class="btn-back iconfont" href="javascript:;" @click="goBack()">
       <i class="icon-back"></i>
-      <span>返回</span>
     </a>
+    国民超级年金险
+    <img src="../../assets/more.svg" style="width:25px;margin-right:5px">
   </header>
 </template>
 <script>
@@ -22,10 +23,10 @@ export default {
 </script>
 <style lang="less" scoped>
 header{
-  z-index: 9999;
-  position: fixed;
-  top: 0;
-  left: 0;
+  // z-index: 9999;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
   width: 100%;
   height: 100px;
   line-height: 100px;

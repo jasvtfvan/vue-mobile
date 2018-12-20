@@ -12,6 +12,7 @@
     "build:sit": "cross-env env_config=sit node build/build.js"
   },
   "dependencies": {
+    "@liqueflies/vue-flex-grid": "^0.0.1",
     "async-validator": "^1.8.2",
     "babel-polyfill": "^6.26.0",
     "cssnano": "^3.10.0",
