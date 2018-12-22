@@ -7,7 +7,10 @@
           <div class="flex-demo success-icon result"></div>
           <div class="flex-demo right result" @click="showpopup(show1)">
             <p class="sucess-text">已投保成功</p>
-            <p class="sucess-price">共支付110元</p>
+            <p class="sucess-price">
+              共支付
+              <span style="color:#F85C58">110元</span>
+            </p>
           </div>
         </div>
       </flexbox-item>
@@ -16,7 +19,10 @@
     <flexbox>
       <flexbox-item :span="12">
         <div class="flex-demo left">
-          <div class="result-tip">您可以在微信公众号“小爱保”的个人中心-我的保单中查询状态</div>
+          <div class="result-tip">
+            您可以在微信公众号“小爱保”的个人中心-我的保单中查询状态
+            <a href="#" style="color:#5B97FB">查看小爱保二维码</a>
+          </div>
         </div>
       </flexbox-item>
     </flexbox>
@@ -24,6 +30,7 @@
       <flexbox-item :span="12">
         <div class="flex-demo result-list">
           <ul>
+            <li>国民超级年金险</li>
             <li>保单号：PLAY20184406000A01723</li>
             <li>被保人：黄小小</li>
             <li>被保人：黄小小</li>
@@ -76,6 +83,7 @@ export default {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
+    margin-right: 30px;
   }
 
   .flex-demo {
@@ -102,6 +110,10 @@ export default {
     }
   }
 
+  .flex-item1 {
+    margin-top: 50px;
+  }
+
   .flex-item1,
   .result-btn {
     display: flex;
@@ -110,8 +122,11 @@ export default {
   }
 
   .result-tip {
-    color: #666666;
-    font-size: 14px;
+    font-size: 26px;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(102, 102, 102, 1);
+    line-height: 48px;
     padding: 40px 70px 0 70px;
   }
 
@@ -147,7 +162,24 @@ export default {
 
   .result-list {
     background: #f9f9f9;
-    padding: 50px 50px 50px 70px
+    padding: 50px 50px 50px 70px;
+
+    ul li {
+      font-size: 28px;
+      font-family: PingFangSC-Medium;
+      font-weight: 500;
+      color: rgba(102, 102, 102, 1);
+      line-height: 48px;
+    }
+
+    ul li:nth-of-type(1) {
+      font-size: 36px;
+      font-family: PingFangSC-Medium;
+      font-weight: 500;
+      color: rgba(68, 68, 68, 1);
+      line-height: 32px;
+      padding-bottom: 10px;
+    }
   }
 }
 </style>

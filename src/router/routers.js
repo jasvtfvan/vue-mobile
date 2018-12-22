@@ -1,6 +1,7 @@
 const Login = resolve => require(["@/views/login/login"], resolve);
 const Home = resolve => require(["@/views/home/home"], resolve);
 const Health = resolve => require(["@/views/home/health/health"], resolve);
+const Pay = resolve => require(["@/views/home/pay/index"], resolve);
 const Form = resolve => require(["@/views/home/form/index"], resolve);
 const Result = resolve => require(["@/views/home/result"], resolve);
 const VwLayout = resolve => require(["@/views/vwlayout/vwLayout"], resolve);
@@ -9,7 +10,7 @@ export default [
   {
     path: "/",
     name: "home",
-    component: Form,
+    component: Pay,
     meta: {
       white: true
     }
