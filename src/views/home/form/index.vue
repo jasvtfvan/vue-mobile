@@ -2,7 +2,7 @@
   <div class="form">
     <vm-header></vm-header>
     <div class="title">投保人信息</div>
-    <flexbox class="flex=box" style="margin-bottom: 10px">
+    <flexbox class="flex=box">
       <flexbox-item :span="4">
         <div class="item-left">姓名</div>
       </flexbox-item>
@@ -10,7 +10,7 @@
         <x-input placeholder="请输入姓名"></x-input>
       </flexbox-item>
     </flexbox>
-    <flexbox class="flex=box" style="margin-bottom: 10px">
+    <flexbox class="flex=box">
       <flexbox-item :span="4">
         <div class="item-left">身份证号</div>
       </flexbox-item>
@@ -18,7 +18,7 @@
         <x-input placeholder="请输身份证号"></x-input>
       </flexbox-item>
     </flexbox>
-    <flexbox class="flex=box" style="margin-bottom: 10px">
+    <flexbox class="flex=box">
       <flexbox-item :span="4">
         <div class="item-left">手机号</div>
       </flexbox-item>
@@ -26,7 +26,7 @@
         <x-input placeholder="请输手机号"></x-input>
       </flexbox-item>
     </flexbox>
-    <flexbox class="flex=box" style="margin-bottom: 10px">
+    <flexbox class="flex=box">
       <flexbox-item :span="4">
         <div class="item-left">验证码</div>
       </flexbox-item>
@@ -34,7 +34,7 @@
         <x-input placeholder="请输验证码"></x-input>
       </flexbox-item>
     </flexbox>
-    <flexbox class="flex=box" style="margin-bottom: 10px">
+    <flexbox class="flex=box">
       <flexbox-item :span="4">
         <div class="item-left">电子邮箱</div>
       </flexbox-item>
@@ -42,7 +42,7 @@
         <x-input placeholder="请电子邮箱"></x-input>
       </flexbox-item>
     </flexbox>
-    <flexbox class="flex=box" style="margin-bottom: 10px">
+    <flexbox class="flex=box">
       <flexbox-item :span="4">
         <div class="item-left">详细地址</div>
       </flexbox-item>
@@ -51,7 +51,7 @@
       </flexbox-item>
     </flexbox>
     <div class="title">被保人信息</div>
-    <flexbox class="flex=box" style="margin-bottom: 10px">
+    <flexbox class="flex=box">
       <flexbox-item :span="4">
         <div class="item-left">为谁投保</div>
       </flexbox-item>
@@ -64,7 +64,7 @@
         >{{item.key}}</span>
       </flexbox-item>
     </flexbox>
-    <flexbox class="flex=box" style="margin-bottom: 10px">
+    <flexbox class="flex=box">
       <flexbox-item :span="4">
         <div class="item-left">姓名</div>
       </flexbox-item>
@@ -72,7 +72,7 @@
         <x-input placeholder="请输入姓名"></x-input>
       </flexbox-item>
     </flexbox>
-    <flexbox class="flex=box" style="margin-bottom: 10px">
+    <flexbox class="flex=box">
       <flexbox-item :span="4">
         <div class="item-left">身份证号</div>
       </flexbox-item>
@@ -105,7 +105,7 @@
       <flexbox-item :span="8">
         <x-input placeholder="续期银行"></x-input>
       </flexbox-item>
-    </flexbox> -->
+    </flexbox>-->
     <flexbox class="flex=box" style="margin-bottom: 10px">
       <flexbox-item :span="4">
         <div class="item-left">银行卡号</div>
@@ -175,7 +175,11 @@
     </flexbox>
 
     <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="1"></flexbox-item>
+      <flexbox-item :span="1">
+        <div class="aggree">
+          <img src="../../../assets/agree/agree.svg" alt>
+        </div>
+      </flexbox-item>
 
       <flexbox-item :span="11">
         <p
@@ -183,11 +187,20 @@
         >我已阅读并同意《保险条款》《投保须知》《人身保险投保提示书》和《平台服务协议》</p>
       </flexbox-item>
     </flexbox>
+
+    <flexbox class="flex=box">
+      <flexbox-item :span="12">
+        <vm-footer :text="btntext" @onBtnClick="showpopup" :isPopup="show1"></vm-footer>
+      </flexbox-item>
+    </flexbox>
+
+    
   </div>
 </template>
 
 <script>
 import vmHeader from "@/components/common/vmHeader";
+import VmFooter from "./vmFooter";
 import { Flexbox, FlexboxItem, Datetime, XNumber, XInput } from "vux";
 import _ from "lodash";
 export default {
@@ -197,11 +210,13 @@ export default {
     Datetime,
     XNumber,
     vmHeader,
-    XInput
+    XInput,
+    VmFooter
   },
   props: {},
   data() {
     return {
+      btntext:"立即投保",
       time1: "请选择被保人年龄",
       item: [
         {
@@ -290,19 +305,21 @@ export default {
   background: #ffffff;
 
   .title {
-    color: #444444;
     font-size: 40px;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 56px;
     padding: 30px 0 30px 25px;
   }
 
   .item-left {
     padding-left: 25px;
-    color: #666666;
     font-size: 28px;
-  }
-
-  .flex-box {
-    margin-bottom: 10px;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(102, 102, 102, 1);
+    line-height: 40px;
   }
 
   .item-datetime {
@@ -312,20 +329,21 @@ export default {
 
   .group-btn {
     padding: 9px 40px 9px 40px;
-    color: #666666;
-    font-size: 26px;
-    min-width: 140px;
+
     background: rgba(255, 255, 255, 1);
     box-shadow: 0px 1px 0px 0px rgba(229, 229, 229, 1);
     border-radius: 54px;
     margin-right: 5px;
+
+    font-size: 26px;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(102, 102, 102, 1);
+    line-height: 37px;
   }
 
   .group-btn-active {
     padding: 9px 40px 9px 40px;
-    color: #666666;
-    font-size: 26px;
-    min-width: 140px;
     background: linear-gradient(
       90deg,
       rgba(121, 189, 253, 1) 0%,
@@ -333,7 +351,11 @@ export default {
     );
     border-radius: 54px;
     margin-right: 5px;
-    color: #ffffff;
+    font-size: 26px;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    line-height: 37px;
   }
 
   .ul-description li {
@@ -348,10 +370,22 @@ export default {
   }
 
   .tip {
-    font-size: 28px;
+    font-size: 24px;
     font-family: PingFangSC-Medium;
     font-weight: 500;
+    color: rgba(102, 102, 102, 1);
+    line-height: 33px;
     padding: 0 21px 24px 30px;
+  }
+
+  .aggree {
+    display: flex;
+    align-items: center;
+    img {
+      width: 30px;
+      height: 30px;
+      margin: 25px;
+    }
   }
 }
 </style>

@@ -78,18 +78,18 @@
       <flexbox-item :span="3">{{isMonthorYear =="P0000016_1"?500:1000}}元/份</flexbox-item>
     </flexbox>
 
-    <flexbox class="flex=box" style="margin-bottom: 10px" v-show="datevalue">
+    <flexbox class="flex=box" style="margin-bottom: 10px">
       <flexbox-item :span="3">
         <div class="item-left">领取年金</div>
       </flexbox-item>
       <flexbox-item :span="9">
-        <div class="item-left">
+        <div class="item-lef item-left-year">
           <span style="color:#F85C58">599.37元/月</span>至终身
         </div>
       </flexbox-item>
     </flexbox>
 
-    <flexbox class="flex=box" style="margin-bottom: 10px" v-show="datevalue">
+    <flexbox class="flex=box" style="margin-bottom: 10px">
       <flexbox-item :span="12">
         <ul class="ul-description">
           <li>您将获得的保障利益是：</li>
@@ -98,9 +98,16 @@
         </ul>
       </flexbox-item>
     </flexbox>
+
+    <flexbox class="flex=box">
+      <flexbox-item :span="12">
+        <vm-footer :text="btntext" @onBtnClick="showpopup" :isPopup="show1"></vm-footer>
+      </flexbox-item>
+    </flexbox>
   </div>
 </template>
 <script>
+import VmFooter from "./vmFooter";
 import { Flexbox, FlexboxItem, Datetime, XNumber } from "vux";
 import _ from "lodash";
 import { getAges } from "@/utils/utils";
@@ -120,7 +127,8 @@ export default {
     Flexbox,
     FlexboxItem,
     Datetime,
-    XNumber
+    XNumber,
+    VmFooter
   },
   props: {},
   data() {
@@ -143,7 +151,8 @@ export default {
       datevalue: "", //出身日期选中值
       age: 0,
       count: 1, //购买份数  月交 500/月  年缴  1000/年
-      isMonthorYear: "P0000016_1" //默认月交
+      isMonthorYear: "P0000016_1", //默认月交
+      btntext: "去投保"
     };
   },
   methods: {
@@ -470,16 +479,28 @@ export default {
   z-index: 99999;
   background: #ffffff;
   .title {
-    color: #444444;
     font-size: 40px;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(68, 68, 68, 1);
+    line-height: 56px;
     padding: 30px 0 30px 25px;
   }
   .item-left {
     padding-left: 25px;
-    color: #666666;
     font-size: 28px;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(102, 102, 102, 1);
+    line-height: 40px;
   }
 
+  .item-left-year {
+    font-size: 26px;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    line-height: 37px;
+  }
   .flex-box {
     margin-bottom: 10px;
   }
@@ -491,20 +512,21 @@ export default {
 
   .group-btn {
     padding: 9px 40px 9px 40px;
-    color: #666666;
-    font-size: 26px;
-    min-width: 140px;
+
     background: rgba(255, 255, 255, 1);
     box-shadow: 0px 1px 0px 0px rgba(229, 229, 229, 1);
     border-radius: 54px;
     margin-right: 5px;
+
+    font-size: 26px;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(102, 102, 102, 1);
+    line-height: 37px;
   }
 
   .group-btn-active {
     padding: 9px 40px 9px 40px;
-    color: #666666;
-    font-size: 26px;
-    min-width: 140px;
     background: linear-gradient(
       90deg,
       rgba(121, 189, 253, 1) 0%,
@@ -512,18 +534,28 @@ export default {
     );
     border-radius: 54px;
     margin-right: 5px;
-    color: #ffffff;
+    font-size: 26px;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    line-height: 37px;
   }
 
   .ul-description li {
     padding: 5px 25px 5px 25px;
-    color: #666666;
     font-size: 24px;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(102, 102, 102, 1);
+    line-height: 48px;
   }
 
   .ul-description li:nth-of-type(1) {
-    color: #444444;
     font-size: 28px;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(68, 68, 68, 1);
+    line-height: 40px;
   }
 }
 </style>

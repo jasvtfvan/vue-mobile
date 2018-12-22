@@ -72,7 +72,5 @@ export default {
     }
   }
 
-  .content3 {
-  }
 }
 </style>
