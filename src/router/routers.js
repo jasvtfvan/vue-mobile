@@ -10,7 +10,7 @@ export default [
   {
     path: "/",
     name: "home",
-    component: Pay,
+    component: Form,
     meta: {
       white: true
     }

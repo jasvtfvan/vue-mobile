@@ -1,200 +1,190 @@
 <template>
   <div class="form">
     <vm-header></vm-header>
-    <div class="title">投保人信息</div>
-    <flexbox class="flex=box">
-      <flexbox-item :span="4">
-        <div class="item-left">姓名</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <x-input placeholder="请输入姓名"></x-input>
-      </flexbox-item>
-    </flexbox>
-    <flexbox class="flex=box">
-      <flexbox-item :span="4">
-        <div class="item-left">身份证号</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <x-input placeholder="请输身份证号"></x-input>
-      </flexbox-item>
-    </flexbox>
-    <flexbox class="flex=box">
-      <flexbox-item :span="4">
-        <div class="item-left">手机号</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <x-input placeholder="请输手机号"></x-input>
-      </flexbox-item>
-    </flexbox>
-    <flexbox class="flex=box">
-      <flexbox-item :span="4">
-        <div class="item-left">验证码</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <x-input placeholder="请输验证码"></x-input>
-      </flexbox-item>
-    </flexbox>
-    <flexbox class="flex=box">
-      <flexbox-item :span="4">
-        <div class="item-left">电子邮箱</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <x-input placeholder="请电子邮箱"></x-input>
-      </flexbox-item>
-    </flexbox>
-    <flexbox class="flex=box">
-      <flexbox-item :span="4">
-        <div class="item-left">详细地址</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <x-input placeholder="详细地址"></x-input>
-      </flexbox-item>
-    </flexbox>
-    <div class="title">被保人信息</div>
-    <flexbox class="flex=box">
-      <flexbox-item :span="4">
-        <div class="item-left">为谁投保</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <span
-          v-for="(item,index) in item"
-          :key="index"
-          :class="item.isactive?'group-btn-active':'group-btn'"
-          @click="modifyButtonStatus('item',index)"
-        >{{item.key}}</span>
-      </flexbox-item>
-    </flexbox>
-    <flexbox class="flex=box">
-      <flexbox-item :span="4">
-        <div class="item-left">姓名</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <x-input placeholder="请输入姓名"></x-input>
-      </flexbox-item>
-    </flexbox>
-    <flexbox class="flex=box">
-      <flexbox-item :span="4">
-        <div class="item-left">身份证号</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <x-input placeholder="身份证号"></x-input>
-      </flexbox-item>
-    </flexbox>
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="4">
-        <div class="item-left">受益人</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <x-input placeholder="受益人"></x-input>
-      </flexbox-item>
-    </flexbox>
-    <!-- <div class="title">缴费账户</div>
-    <div class="tip">请你使用投保人的银行卡，第2年及以后的保费将从该银行卡扣除</div>
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="4">
-        <div class="item-left">持卡人</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <x-input placeholder="持卡人"></x-input>
-      </flexbox-item>
-    </flexbox>
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="4">
-        <div class="item-left">续期银行</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <x-input placeholder="续期银行"></x-input>
-      </flexbox-item>
-    </flexbox>-->
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="4">
-        <div class="item-left">银行卡号</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <x-input placeholder="银行卡号"></x-input>
-      </flexbox-item>
-    </flexbox>
-    <div class="title">保障计划</div>
 
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="4">
-        <div class="item-left">保障期限</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <div class="item-left">终身</div>
-      </flexbox-item>
-    </flexbox>
+    <div class="content">
+      <div class="title">投保人信息</div>
+      <flexbox class="flex=box row">
+        <flexbox-item :span="4">
+          <div class="item-left">姓名</div>
+        </flexbox-item>
+        <flexbox-item :span="8">
+          <x-input placeholder="请输入姓名"></x-input>
+        </flexbox-item>
+      </flexbox>
+      <flexbox class="flex=box row">
+        <flexbox-item :span="4">
+          <div class="item-left">身份证号</div>
+        </flexbox-item>
+        <flexbox-item :span="8">
+          <x-input placeholder="请输身份证号"></x-input>
+        </flexbox-item>
+      </flexbox>
+      <flexbox class="flex=box row">
+        <flexbox-item :span="4">
+          <div class="item-left">手机号</div>
+        </flexbox-item>
+        <flexbox-item :span="8">
+          <x-input placeholder="请输手机号"></x-input>
+        </flexbox-item>
+      </flexbox>
+      <flexbox class="flex=box row">
+        <flexbox-item :span="4">
+          <div class="item-left">验证码</div>
+        </flexbox-item>
+        <flexbox-item :span="8">
+          <x-input placeholder="请输验证码"></x-input>
+        </flexbox-item>
+      </flexbox>
+      <flexbox class="flex=box row">
+        <flexbox-item :span="4">
+          <div class="item-left">电子邮箱</div>
+        </flexbox-item>
+        <flexbox-item :span="8">
+          <x-input placeholder="请电子邮箱"></x-input>
+        </flexbox-item>
+      </flexbox>
+      <flexbox class="flex=box row">
+        <flexbox-item :span="4">
+          <div class="item-left">详细地址</div>
+        </flexbox-item>
+        <flexbox-item :span="8">
+          <x-input placeholder="详细地址"></x-input>
+        </flexbox-item>
+      </flexbox>
+      <div class="title">被保人信息</div>
+      <flexbox class="flex=box row">
+        <flexbox-item :span="4">
+          <div class="item-left">为谁投保</div>
+        </flexbox-item>
+        <flexbox-item :span="8">
+          <div class="group-btn-cell">
+            <span
+              v-for="(item,index) in item"
+              :key="index"
+              :class="item.isactive?'group-btn-active':'group-btn'"
+              @click="modifyButtonStatus('item',index)"
+            >{{item.key}}</span>
+          </div>
+        </flexbox-item>
+      </flexbox>
+      <flexbox class="flex=box row">
+        <flexbox-item :span="4">
+          <div class="item-left">姓名</div>
+        </flexbox-item>
+        <flexbox-item :span="8">
+          <x-input placeholder="请输入姓名"></x-input>
+        </flexbox-item>
+      </flexbox>
+      <flexbox class="flex=box row">
+        <flexbox-item :span="4">
+          <div class="item-left">身份证号</div>
+        </flexbox-item>
+        <flexbox-item :span="8">
+          <x-input placeholder="身份证号"></x-input>
+        </flexbox-item>
+      </flexbox>
+      <flexbox class="flex=box row" style="margin-bottom: 10px">
+        <flexbox-item :span="4">
+          <div class="item-left">受益人</div>
+        </flexbox-item>
+        <flexbox-item :span="8">
+          <x-input placeholder="受益人"></x-input>
+        </flexbox-item>
+      </flexbox>
 
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="4">
-        <div class="item-left">缴费期限</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <span
-          v-for="(item,index) in item2"
-          :key="index"
-          :class="item.isactive?'group-btn-active':'group-btn'"
-          @click="modifyButtonStatus('item2',index)"
-        >{{item.key}}</span>
-      </flexbox-item>
-    </flexbox>
+      <flexbox class="flex=box row" style="margin-bottom: 10px">
+        <flexbox-item :span="4">
+          <div class="item-left">银行卡号</div>
+        </flexbox-item>
+        <flexbox-item :span="8">
+          <x-input placeholder="银行卡号"></x-input>
+        </flexbox-item>
+      </flexbox>
+      <div class="title">保障计划</div>
 
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="4">
-        <div class="item-left">缴费方式</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <span
-          v-for="(item,index) in item3"
-          :key="index"
-          :class="item.isactive?'group-btn-active':'group-btn'"
-          @click="modifyButtonStatus('item3',index)"
-        >{{item.key}}</span>
-      </flexbox-item>
-    </flexbox>
+      <flexbox class="flex=box row" style="margin-bottom: 10px">
+        <flexbox-item :span="4">
+          <div class="item-left">保障期限</div>
+        </flexbox-item>
+        <flexbox-item :span="8">
+          <div class="item-left group-btn-cell">终身</div>
+        </flexbox-item>
+      </flexbox>
 
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="4">
-        <div class="item-left">购买份数</div>
-      </flexbox-item>
-      <flexbox-item :span="5">
-        <x-number></x-number>
-      </flexbox-item>
-      <flexbox-item :span="3">500元/份</flexbox-item>
-    </flexbox>
+      <flexbox class="flex=box row" style="margin-bottom: 10px">
+        <flexbox-item :span="4">
+          <div class="item-left">缴费期限</div>
+        </flexbox-item>
+        <flexbox-item :span="8">
+          <div class="group-btn-cell">
+            <span
+              v-for="(item,index) in item2"
+              :key="index"
+              :class="item.isactive?'group-btn-active':'group-btn'"
+              @click="modifyButtonStatus('item2',index)"
+            >{{item.key}}</span>
+          </div>
+        </flexbox-item>
+      </flexbox>
 
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="4">
-        <div class="item-left">领取年金</div>
-      </flexbox-item>
-      <flexbox-item :span="8">
-        <div class="item-left">
-          <span style="color:#F85C58">599.37元/月</span>至终身
-        </div>
-      </flexbox-item>
-    </flexbox>
+      <flexbox class="flex=box row" style="margin-bottom: 10px">
+        <flexbox-item :span="4">
+          <div class="item-left">缴费方式</div>
+        </flexbox-item>
+        <flexbox-item :span="8">
+          <div class="group-btn-cell">
+            <span
+              v-for="(item,index) in item3"
+              :key="index"
+              :class="item.isactive?'group-btn-active':'group-btn'"
+              @click="modifyButtonStatus('item3',index)"
+            >{{item.key}}</span>
+          </div>
+        </flexbox-item>
+      </flexbox>
 
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="1">
-        <div class="aggree">
-          <img src="../../../assets/agree/agree.svg" alt>
-        </div>
-      </flexbox-item>
+      <flexbox class="flex=box row" style="margin-bottom: 10px">
+        <flexbox-item :span="4">
+          <div class="item-left">购买份数</div>
+        </flexbox-item>
+        <flexbox-item :span="5">
+          <x-number></x-number>
+        </flexbox-item>
+        <flexbox-item :span="3">500元/份</flexbox-item>
+      </flexbox>
 
-      <flexbox-item :span="11">
-        <p
-          style="color:#666666;font-size:14px;margin-right:10px"
-        >我已阅读并同意《保险条款》《投保须知》《人身保险投保提示书》和《平台服务协议》</p>
-      </flexbox-item>
-    </flexbox>
+      <flexbox class="flex=box row" style="margin-bottom: 10px">
+        <flexbox-item :span="4">
+          <div class="item-left">领取年金</div>
+        </flexbox-item>
+        <flexbox-item :span="8">
+          <div class="item-left group-btn-cell">
+            <span  style="color:#F85C58">599.37元/月</span>至终身
+          </div>
+        </flexbox-item>
+      </flexbox>
 
-    <flexbox class="flex=box">
-      <flexbox-item :span="12">
-        <vm-footer :text="btntext" @onBtnClick="showpopup" :isPopup="show1"></vm-footer>
-      </flexbox-item>
-    </flexbox>
+      <flexbox class="flex=box" style="margin-bottom: 10px">
+        <flexbox-item :span="1">
+          <div class="aggree">
+            <img src="../../../assets/agree/agree.svg" alt>
+          </div>
+        </flexbox-item>
 
-    
+        <flexbox-item :span="11">
+          <p
+            style="color:#666666;font-size:14px;margin-right:10px"
+          >我已阅读并同意《保险条款》《投保须知》《人身保险投保提示书》和《平台服务协议》</p>
+        </flexbox-item>
+      </flexbox>
+
+      <flexbox class="flex=box">
+        <flexbox-item :span="12">
+          <vm-footer :text="btntext" @onBtnClick="showpopup"></vm-footer>
+        </flexbox-item>
+      </flexbox>
+    </div>
   </div>
 </template>
 
@@ -216,7 +206,7 @@ export default {
   props: {},
   data() {
     return {
-      btntext:"立即投保",
+      btntext: "立即投保",
       time1: "请选择被保人年龄",
       item: [
         {
@@ -314,7 +304,7 @@ export default {
   }
 
   .item-left {
-    padding-left: 25px;
+    // padding-left: 25px;
     font-size: 28px;
     font-family: PingFangSC-Medium;
     font-weight: 500;
@@ -386,6 +376,18 @@ export default {
       height: 30px;
       margin: 25px;
     }
+  }
+
+  .row {
+    border-bottom: 1px solid #e5e5e5 !important;
+  }
+
+  .content {
+    margin: 0 25px;
+  }
+
+  .group-btn-cell {
+    padding: 0 0 15px 0;
   }
 }
 </style>
