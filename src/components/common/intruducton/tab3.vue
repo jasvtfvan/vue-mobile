@@ -1,21 +1,71 @@
 <template>
-  <div class="tab1">
-    <div class="bg-img"></div>
-    <div class="bg-text">
-      <p class="title">案例演示</p>
-      <ul>
-        <li>1.大大28岁时，儿子小小出生；</li>
-        <li>2.小小18-21岁期间，每年可领取5万元作为教育金，共领取20万</li>
-        <li>3.大大65-80岁期间，每年可领取10万元作为养老金补充，共领取160万；</li>
-        <li>4.大大80岁时可一次性领取79.43万；</li>
-      </ul>
-      <!-- <br>
-      <div class="sub-titile">数据为保单年度末的累计生息账户余额和现金价值之和</div>-->
-    </div>
+  <div class="tab3">
+    <ul>
+      <li>理赔指引</li>
+      <li>
+        <flexbox>
+          <flexbox-item :span="2">
+            <div class="img">
+              <img src="../../../assets/tab3/step1.png" alt>
+            </div>
+          </flexbox-item>
+          <flexbox-item :span="10">
+            <p>第1步：理赔申请</p>
+            <p>致电保险公司客服400-69-12345申请理赔</p>
+          </flexbox-item>
+        </flexbox>
+      </li>
+      <li>
+        <flexbox>
+          <flexbox-item :span="2">
+            <div class="img">
+              <img src="../../../assets/tab3/step2.png" alt>
+            </div>
+          </flexbox-item>
+          <flexbox-item :span="10">
+            <p>第2步：提交材料</p>
+            <p>按保险条款约定准备相应理赔资料</p>
+          </flexbox-item>
+        </flexbox>
+      </li>
+      <li>
+        <flexbox>
+          <flexbox-item :span="2">
+            <div class="img">
+              <img src="../../../assets/tab3/step3.png" alt>
+            </div>
+          </flexbox-item>
+          <flexbox-item :span="10">
+            <p>第3步：理赔审核</p>
+            <p>保险公司进行理赔资料审核</p>
+          </flexbox-item>
+        </flexbox>
+      </li>
+      <li>
+        <flexbox>
+          <flexbox-item :span="2">
+            <div class="img">
+              <img src="../../../assets/tab3/step4.png" alt>
+            </div>
+          </flexbox-item>
+          <flexbox-item :span="10">
+            <p>第4步：获得赔款</p>
+            <p>保险公司支付客户理赔款</p>
+          </flexbox-item>
+        </flexbox>
+      </li>
+
+      <li>查看理赔须知</li>
+    </ul>
   </div>
 </template>
 <script>
+import { Flexbox, FlexboxItem, Datetime, XNumber } from "vux";
 export default {
+  components: {
+    Flexbox,
+    FlexboxItem
+  },
   props: {},
   data() {
     return {};
@@ -28,32 +78,62 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.tab1 {
-
-        .bg-img {
-      margin-top: 50px;
-      clear: both;
-      height: 10000px;
-      background-image: url("../../../assets/content1.png");
-      // background-image: url('../../images/login/login_bg.jpg');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 100% 100%;
+.tab3 {
+  ul li {
+    &:nth-of-type(1) {
+      font-size: 44px;
+      font-family: PingFangSC-Medium;
+      font-weight: 500;
+      color: rgba(68, 68, 68, 1);
+      line-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 50px 10px 50px;
     }
 
-    .bg-text {
-      .title {
-        color: #444444;
-        font-size: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    &:nth-of-type(2),
+    &:nth-of-type(3),
+    &:nth-of-type(4),
+    &:nth-of-type(5) {
+      .img {
+        text-align: right;
+        img {
+          width: 37px;
+          height: 37px;
+        }
       }
 
-      ul li {
-        color: #666666;
-        font-size: 26px;
+      p {
+        padding: 20px;
+      }
+      p:nth-of-type(1) {
+        font-size: 28px;
+        font-family: PingFangSC-Medium;
+        font-weight: 500;
+        color: rgba(77, 142, 250, 1);
+        line-height: 28px;
+      }
+      p:nth-of-type(2) {
+        font-size: 28px;
+        font-family: PingFangSC-Medium;
+        font-weight: 500;
+        color: rgba(136, 136, 136, 1);
+        line-height: 26px;
       }
     }
+    &:nth-of-type(6) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(245, 245, 245, 1);
+      font-size: 28px;
+      font-family: PingFangSC-Medium;
+      font-weight: 500;
+      color: rgba(77, 142, 250, 1);
+      line-height: 28px;
+      padding: 25px 0;
+    }
+  }
 }
 </style>
