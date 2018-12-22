@@ -27,6 +27,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .tab2 {
+  margin-top: 50px;
   ul li {
     &:nth-of-type(1) {
       font-size: 44px;
