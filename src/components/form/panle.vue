@@ -112,7 +112,7 @@
 
     <flexbox class="flex=box">
       <flexbox-item :span="12">
-        <vm-footer :text="btntext" @onBtnClick="showpopup" :isPopup="show1"></vm-footer>
+        <vm-footer :text="btntext" :isPopup="show1"></vm-footer>
       </flexbox-item>
     </flexbox>
   </div>
@@ -144,6 +144,7 @@ export default {
   props: {},
   data() {
     return {
+      show1:"",
       time1: "请选择被保人年龄(18周岁-55周岁)",
       item: [
         { key: "本人", value: "0", isactive: true },
