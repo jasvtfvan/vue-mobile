@@ -108,6 +108,7 @@ export default {
         font-weight: 400;
         color: rgba(136, 136, 136, 1);
         line-height: 48px;
+         padding: 25px 25px 25px 0;
       }
     }
     &:nth-of-type(6) {

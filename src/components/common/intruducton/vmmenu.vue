@@ -40,14 +40,6 @@ export default {
         }
       });
 
-      //document.body.scrollTop = document.documentElement.scrollTop = 0;
-      // scrollTo(0,0);
-
-      // console.log("//////////////////////////////");
-
-      const currentY =
-        document.documentElement.scrollTop || document.body.scrollTop;
-      scrollAnimation(currentY, 70);
     }
   }
 };
