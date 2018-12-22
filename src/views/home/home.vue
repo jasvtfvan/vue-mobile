@@ -6,17 +6,17 @@
     <vm-kind></vm-kind>
     <vm-range></vm-range>
 
-    <!-- <vm-fixed-btn></vm-fixed-btn> -->
-    <!-- <anchor></anchor> -->
+    <vm-fixed-btn></vm-fixed-btn>
+    <anchor></anchor>
     <intruducton></intruducton>
-    <!-- <anchorNav></anchorNav> -->
+    <anchorNav></anchorNav>
     <div v-transfer-dom>
       <popup v-model="show1">
         <panle></panle>
       </popup>
     </div>
 
-    <!-- <vm-footer :text="btntext" @onBtnClick="showpopup" :isPopup="show1"></vm-footer> -->
+    <vm-footer :text="btntext" @onBtnClick="showpopup" :isPopup="show1"></vm-footer>
   </div>
 </template>
 
