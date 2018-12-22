@@ -1,93 +1,104 @@
 <template>
   <div class="panel">
     <div class="title">保费试算</div>
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="3">
-        <div class="item-left">为谁投保</div>
-      </flexbox-item>
-      <flexbox-item :span="9">
-        <span
-          v-for="(item,index) in item"
-          :key="index"
-          :class="item.isactive?'group-btn-active':'group-btn'"
-          @click="modifyButtonStatus('item',index)"
-        >{{item.key}}</span>
-      </flexbox-item>
-    </flexbox>
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="3">
-        <div class="item-left">出生日期</div>
-      </flexbox-item>
-      <flexbox-item :span="9">
-        <datetime
-          title
-          v-model="datevalue"
-          :placeholder="time1"
-          value-text-align="left"
-          class="item-datetime"
-          :default-selected-value="defaultDate"
-          @on-change="getAge(datevalue)"
-          @on-show="showdate"
-        ></datetime>
-      </flexbox-item>
-    </flexbox>
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="3">
-        <div class="item-left">保障期限</div>
-      </flexbox-item>
-      <flexbox-item :span="9">
-        <div class="item-left">终身</div>
-      </flexbox-item>
-    </flexbox>
+    <div class="content">
+      <flexbox class="flex=box row" style="margin-bottom: 10px">
+        <flexbox-item :span="3">
+          <div class="item-left">为谁投保</div>
+        </flexbox-item>
+        <flexbox-item :span="9">
+          <div class="group-btn-cell">
+            <span
+              v-for="(item,index) in item"
+              :key="index"
+              :class="item.isactive?'group-btn-active':'group-btn'"
+              @click="modifyButtonStatus('item',index)"
+            >{{item.key}}</span>
+          </div>
+        </flexbox-item>
+      </flexbox>
+      <flexbox class="flex=box row" style="margin-bottom: 10px">
+        <flexbox-item :span="3">
+          <div class="item-left">出生日期</div>
+        </flexbox-item>
+        <flexbox-item :span="9">
+          <datetime
+            title
+            v-model="datevalue"
+            :placeholder="time1"
+            value-text-align="left"
+            class="item-datetime"
+            :default-selected-value="defaultDate"
+            @on-change="getAge(datevalue)"
+            @on-show="showdate"
+          ></datetime>
+        </flexbox-item>
+      </flexbox>
+      <flexbox class="flex=box row" style="margin-bottom: 10px">
+        <flexbox-item :span="3">
+          <div class="item-left">保障期限</div>
+        </flexbox-item>
+        <flexbox-item :span="9">
+          <div class="item-left group-btn-cell">终身</div>
+        </flexbox-item>
+      </flexbox>
 
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="3">
-        <div class="item-left">缴费期限</div>
-      </flexbox-item>
-      <flexbox-item :span="9">
-        <span
-          v-for="(item,index) in item2"
-          :key="index"
-          :class="item.isactive?'group-btn-active':'group-btn'"
-          @click="modifyButtonStatus('item2',index)"
-        >{{item.key}}</span>
-      </flexbox-item>
-    </flexbox>
+      <flexbox class="flex=box row" style="margin-bottom: 10px">
+        <flexbox-item :span="3">
+          <div class="item-left">缴费期限</div>
+        </flexbox-item>
+        <flexbox-item :span="9">
+          <div class="group-btn-cell">
+            <span
+              v-for="(item,index) in item2"
+              :key="index"
+              :class="item.isactive?'group-btn-active':'group-btn'"
+              @click="modifyButtonStatus('item2',index)"
+            >{{item.key}}</span>
+          </div>
+        </flexbox-item>
+      </flexbox>
 
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="3">
-        <div class="item-left">缴费方式</div>
-      </flexbox-item>
-      <flexbox-item :span="9">
-        <span
-          v-for="(item,index) in item3"
-          :key="index"
-          :class="item.isactive?'group-btn-active':'group-btn'"
-          @click="modifyButtonStatus('item3',index)"
-        >{{item.key}}</span>
-      </flexbox-item>
-    </flexbox>
+      <flexbox class="flex=box row" style="margin-bottom: 10px">
+        <flexbox-item :span="3">
+          <div class="item-left">缴费方式</div>
+        </flexbox-item>
+        <flexbox-item :span="9">
+          <div class="group-btn-cell">
+            <span
+              v-for="(item,index) in item3"
+              :key="index"
+              :class="item.isactive?'group-btn-active':'group-btn'"
+              @click="modifyButtonStatus('item3',index)"
+            >{{item.key}}</span>
+          </div>
+        </flexbox-item>
+      </flexbox>
 
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="3">
-        <div class="item-left">购买份数</div>
-      </flexbox-item>
-      <flexbox-item :span="5">
-        <x-number v-model="count"></x-number>
-      </flexbox-item>
-      <flexbox-item :span="3">{{isMonthorYear =="P0000016_1"?500:1000}}元/份</flexbox-item>
-    </flexbox>
+      <flexbox class="flex=box row" style="margin-bottom: 10px">
+        <flexbox-item :span="3">
+          <div class="item-left">购买份数</div>
+        </flexbox-item>
+        <flexbox-item :span="5">
+          <x-number v-model="count"></x-number>
+        </flexbox-item>
+        <flexbox-item :span="3">{{isMonthorYear =="P0000016_1"?500:1000}}元/份</flexbox-item>
+      </flexbox>
 
-    <flexbox class="flex=box" style="margin-bottom: 10px">
-      <flexbox-item :span="3">
-        <div class="item-left">领取年金</div>
-      </flexbox-item>
-      <flexbox-item :span="9">
-        <div class="item-lef item-left-year">
-          <span style="color:#F85C58">599.37元/月</span>至终身
-        </div>
-      </flexbox-item>
-    </flexbox>
+      <flexbox class="flex=box row" style="margin-bottom: 10px">
+        <flexbox-item :span="3">
+          <div class="item-left">领取年金</div>
+        </flexbox-item>
+        <flexbox-item :span="9">
+          <div class="group-btn-cell">
+            <div class="item-left item-left-year">
+              <span style="color:#F85C58">599.37元/月</span>
+              至终身
+            </div>
+          </div>
+        </flexbox-item>
+      </flexbox>
+    </div>
 
     <flexbox class="flex=box" style="margin-bottom: 10px">
       <flexbox-item :span="12">
@@ -487,7 +498,7 @@ export default {
     padding: 30px 0 30px 25px;
   }
   .item-left {
-    padding-left: 25px;
+    // padding-left: 25px;
     font-size: 28px;
     font-family: PingFangSC-Medium;
     font-weight: 500;
@@ -556,6 +567,18 @@ export default {
     font-weight: 500;
     color: rgba(68, 68, 68, 1);
     line-height: 40px;
+  }
+
+  .row {
+    border-bottom: 1px solid #e5e5e5 !important;
+  }
+
+  .content {
+    margin: 0 25px;
+  }
+
+  .group-btn-cell {
+    padding: 0 0 17px 0;
   }
 }
 </style>
