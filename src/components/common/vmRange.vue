@@ -4,11 +4,11 @@
     <ul>
       <li>
         <span>终身领取</span>
-        <span>最高可达月/年交保费的6</span>
+        <span>最高可达月/年交保费的61%</span>
       </li>
       <li>
-        <span>保障年龄</span>
-        <span>28天-55周岁</span>
+        <span>身故保障金</span>
+        <span>至少返还全部已交保费</span>
       </li>
     </ul>
     <div class="view">
@@ -32,12 +32,20 @@ export default {
 <style lang="less" scoped>
 .range {
   .title {
-    padding: 0 0 0 24px;
+    padding: 0 0 24px 24px;
+    font-size: 40px;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(68, 68, 68, 1);
+    line-height: 56px;
   }
   .view a {
-    color: #4b8dfa;
+    padding: 0 0 0 24px;
     font-size: 28px;
-    padding: 0 0 0 24px
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(75, 141, 250, 1);
+    line-height: 40px;
   }
 
   ul > li {
@@ -46,10 +54,17 @@ export default {
     padding: 0 24px 24px 24px;
     span {
       font-size: 28px;
+      font-family: PingFangSC-Medium;
+      font-weight: 500;
+      line-height: 40px;
     }
 
     span:nth-of-type(1) {
-      color: #444444;
+      color: rgba(136, 136, 136, 1);
+    }
+
+    span:nth-of-type(2) {
+      color: rgba(68, 68, 68, 1);
     }
   }
 }

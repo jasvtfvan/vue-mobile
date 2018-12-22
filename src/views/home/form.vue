@@ -88,7 +88,7 @@
         <x-input placeholder="受益人"></x-input>
       </flexbox-item>
     </flexbox>
-    <div class="title">缴费账户</div>
+    <!-- <div class="title">缴费账户</div>
     <div class="tip">请你使用投保人的银行卡，第2年及以后的保费将从该银行卡扣除</div>
     <flexbox class="flex=box" style="margin-bottom: 10px">
       <flexbox-item :span="4">
@@ -105,7 +105,7 @@
       <flexbox-item :span="8">
         <x-input placeholder="续期银行"></x-input>
       </flexbox-item>
-    </flexbox>
+    </flexbox> -->
     <flexbox class="flex=box" style="margin-bottom: 10px">
       <flexbox-item :span="4">
         <div class="item-left">银行卡号</div>

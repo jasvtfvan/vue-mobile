@@ -2,19 +2,29 @@
   <div class="feature">
     <span class="title">
       <span>国华人寿承保</span>
-      <img src="../../assets/disable.svg" alt>
+      <!-- <div class="keep">
+        <img src="../../assets/disable.svg" alt>
+        <p>已收藏</p>
+      </div>-->
+      <disabe></disabe>
     </span>
-  <ul>
-    <li>仅90天等待期，</li>
-    <li>仅90天等待期，保障责任更全 小投入高杠杆，150万保额免体检</li>
-  </ul>
+    <ul>
+      <li>仅90天等待期，</li>
+      <li>仅90天等待期，保障责任更全 小投入高杠杆，150万保额免体检</li>
+    </ul>
   </div>
 </template>
 <script>
+import able from "@/components/common/keep/index";
+import disabe from "@/components/common/keep/disable";
 export default {
   props: {},
   data() {
     return {};
+  },
+  components: {
+    able,
+    disabe
   },
   methods: {
     goBack() {
@@ -25,7 +35,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .feature {
-  background: #FFFFFF;
+  background: #ffffff;
   .title {
     display: flex;
     justify-content: space-between;
@@ -34,18 +44,34 @@ export default {
       font-size: 40px;
       color: #444444;
       margin-left: 24px;
+      font-size: 40px;
+      font-family: PingFangSC-Medium;
+      font-weight: 500;
+      color: rgba(68, 68, 68, 1);
+      line-height: 56px;
     }
-    img {
-      width: 40px;
-      height: 40px;
-      margin-right: 24px;
+    .keep {
+      text-align: center;
+      margin-right: 30px;
+      img {
+        width: 50px;
+        height: 50px;
+      }
+      span {
+        color: #666666;
+        font-size: 20px;
+      }
     }
   }
 
-  ul li{
+  ul li {
     color: #666666;
     font-size: 28px;
-    margin-left: 24px
+    margin-left: 24px;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(102, 102, 102, 1);
+    line-height: 50px;
   }
 }
 </style>

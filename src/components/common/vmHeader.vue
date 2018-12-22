@@ -11,22 +11,17 @@
 export default {
   props: {},
   data() {
-    return{
-    }
+    return {};
   },
   methods: {
-    goBack(){
+    goBack() {
       this.$router.go(-1);
     }
   }
-}
+};
 </script>
 <style lang="less" scoped>
-header{
-  // z-index: 9999;
-  // position: fixed;
-  // top: 0;
-  // left: 0;
+header {
   width: 100%;
   height: 100px;
   line-height: 100px;
@@ -36,8 +31,12 @@ header{
   display: -ms-flexbox;
   display: flex;
   justify-content: space-between;
-  a{
-    &.btn-back{
+  font-size: 34px;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(68, 68, 68, 1);
+  a {
+    &.btn-back {
       color: #333;
       padding: 0 20px;
       height: 100px;
@@ -46,11 +45,11 @@ header{
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
-      i{
+      i {
         font-size: 52px;
-        font-style:normal;
+        font-style: normal;
       }
-      span{
+      span {
         font-size: 36px;
       }
     }

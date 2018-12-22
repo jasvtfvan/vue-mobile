@@ -9,7 +9,7 @@ export default [
   {
     path: "/",
     name: "home",
-    component: Result,
+    component: Home,
     meta: {
       white: true
     }
@@ -18,6 +18,15 @@ export default [
     path: "/home",
     name: "Home",
     component: Home,
+    meta: {
+      home: true,
+      isback: false
+    }
+  },
+  {
+    path: "/form",
+    name: "Form",
+    component: Form,
     meta: {
       home: true,
       isback: false

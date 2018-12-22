@@ -1,50 +1,44 @@
 <template>
   <footer class="vm-1px-t">
-    <flexbox >
+    <flexbox>
       <flexbox-item :span="2">
-        <div class="flex-demo">客服</div>
+        <div class="custome">
+          <img src="../../assets/custom.jpg" alt>
+          <p class="custome">客服</p>
+        </div>
       </flexbox-item>
       <flexbox-item :span="5">
         <div class="flex-demo left">
-          <span>￥100</span>
+          <span>￥1000</span>
           <span>/年起</span>
         </div>
       </flexbox-item>
       <flexbox-item :span="5">
-        <div class="flex-demo right" @click="showpopup(show1)">
-          <span>立即投保</span>
+        <div class="flex-demo right" @click="showpopup()">
+          <span>{{!isPopup?text:"去投保"}}</span>
         </div>
       </flexbox-item>
     </flexbox>
-
-    <popup v-model="show1">
-      <!-- <group label-width="5.5em" label-margin-right="2em" label-align="justify">
-           <datetime title="" v-model="time1" value-text-align="left"></datetime>
-      </group>-->
-      <!-- 1111111111111111111 -->
-      <panle></panle>
-    </popup>
   </footer>
 </template>
 <script>
 import { SWITCH_MENU } from "@/constants/publicTypes";
 import { mapMutations, mapGetters } from "vuex";
-import { Flexbox, FlexboxItem, Divider, Popup, Datetime, Group } from "vux";
-import panle from "../form/panle.vue";
+import { Flexbox, FlexboxItem, Datetime, Group } from "vux";
+
 export default {
-  props: {},
+  props: {
+    text: String,
+    isPopup: Boolean
+  },
   components: {
     Flexbox,
     FlexboxItem,
-    Divider,
-    Popup,
     Datetime,
-    Group,
-    panle
+    Group
   },
   data() {
     return {
-      show1: true,
       time1: "2018-07-12"
     };
   },
@@ -60,8 +54,19 @@ export default {
       this[SWITCH_MENU](index);
     },
 
-    showpopup(val) {
-      this.show1 = !val;
+    showpopup() {
+      console.log(this.isPopup);
+
+      //去投保
+      if (this.isPopup) {
+        console.log("if");
+        this.$router.push({
+          path: "/health"
+        });
+      } else {
+        console.log("else");
+        this.$emit("onBtnClick");
+      }
     },
 
     goHomePage() {
@@ -109,18 +114,46 @@ footer {
   display: flex;
   align-items: center;
 
+  .custome {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 17px 0 7px 10px;
+    justify-content: center;
+    text-align: center;
+    // padding: 10px 0;
+    img {
+      width: 45px;
+      height: 45px;
+      position: relative;
+      top: 8px;
+    }
+    p {
+      font-size: 22px;
+      font-family: PingFangSC-Regular;
+      font-weight: 400;
+      color: rgba(119, 126, 143, 1);
+      // line-height: 30px;
+    }
+  }
+
   .left {
     display: flex;
     align-items: center;
     justify-content: center;
-    span:nth-child(1) {
-      color: #f85c58;
+    span {
       font-size: 60px;
+      font-family: PingFangSC-Medium;
+      font-weight: 500;
+      line-height: 84px;
+    }
+    span:nth-child(1) {
+      color: rgba(248, 92, 88, 1);
     }
 
     span:nth-child(2) {
-      color: #888888;
       font-size: 24px;
+      color: rgba(136, 136, 136, 1);
     }
   }
 
@@ -137,7 +170,11 @@ footer {
     );
 
     span {
-      color: #ffffff;
+      font-size: 36px;
+      font-family: PingFangSC-Medium;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 1);
+      line-height: 34px;
     }
   }
 }

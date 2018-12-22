@@ -32,12 +32,13 @@ export default {
   .bg-img {
     margin-top: 50px;
     clear: both;
-    height: 10000px;
+    height: 1000px;
     background-image: url("../../../assets/content1.png");
     // background-image: url('../../images/login/login_bg.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
+    background-size:cover;
   }
 
   .bg-text {

@@ -1,6 +1,5 @@
 <template>
   <div class="banner">
-    <div class="title">国华人寿承保</div>
   </div>
 </template>
 <script>
@@ -20,11 +19,13 @@ export default {
 .banner {
   margin: 26px;
   height: 320px;
+  // width: 100%;
   background-image: url("../../assets/anchor.png");
   // background-image: url('../../images/login/login_bg.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
+  background-size: cover;
   //   img {
   //     height: 320px;
   //     width: 100%;

@@ -5,12 +5,19 @@
     <vm-feature></vm-feature>
     <vm-kind></vm-kind>
     <vm-range></vm-range>
-    <vm-footer></vm-footer>
-    <!-- 
-    <vm-fixed-btn></vm-fixed-btn> -->
+
+    
+    <!-- <vm-fixed-btn></vm-fixed-btn> -->
     <anchor></anchor>
     <!-- <intruducton></intruducton> -->
     <!-- <anchorNav></anchorNav> -->
+    <div v-transfer-dom>
+      <popup v-model="show1">
+        <panle></panle>
+      </popup>
+    </div>
+
+    <vm-footer :text="btntext" @onBtnClick="showpopup" :isPopup="show1"></vm-footer>
   </div>
 </template>
 
@@ -25,11 +32,16 @@ import vmFixedBtn from "@/components/common/vmFixedBtn";
 import anchor from "@/components/common/anchor";
 import intruducton from "@/components/common/intruducton/intruducton";
 
+import { Popup, TransferDom } from "vux";
+import panle from "@/components//form/panle.vue";
 
 import getDpr from "@/utils/getDpr";
 import { mapActions } from "vuex";
 import { LOGOUT, GET_USER_INFO } from "@/constants/apiTypes";
 export default {
+  directives: {
+    TransferDom
+  },
   components: {
     VmFooter,
     vmHeader,
@@ -40,6 +52,8 @@ export default {
     vmFixedBtn,
     anchor,
     intruducton,
+    Popup,
+    panle
   },
   name: "home",
   data() {
@@ -48,7 +62,9 @@ export default {
       isExiting: false,
       exitStyle: {
         background: "#00beda"
-      }
+      },
+      show1: false,
+      btntext: "立即投保"
     };
   },
   watch: {
@@ -63,6 +79,9 @@ export default {
   mounted() {},
   methods: {
     ...mapActions([LOGOUT, GET_USER_INFO]),
+    showpopup(val) {
+      this.show1 = true;
+    },
     logout() {
       this.isExiting = true;
       this[LOGOUT]()
