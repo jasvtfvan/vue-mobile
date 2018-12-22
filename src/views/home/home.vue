@@ -7,7 +7,7 @@
     <vm-range></vm-range>
 
     
-    <!-- <vm-fixed-btn></vm-fixed-btn> -->
+    <vm-fixed-btn></vm-fixed-btn>
     <anchor></anchor>
     <!-- <intruducton></intruducton> -->
     <!-- <anchorNav></anchorNav> -->

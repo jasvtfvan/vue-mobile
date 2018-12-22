@@ -1,6 +1,7 @@
 <template>
   <div class="fixed-btn">
-    <span>保费试算</span>
+    <span>保试</span>
+    <span>费算</span>
   </div>
 </template>
 <script>
@@ -32,10 +33,11 @@ export default {
   align-items: center;
   justify-content: center;
   span {
-    color: #ffffff;
     font-size: 34px;
+    font-family: AliHYAiHei;
+    color: rgba(255, 255, 255, 1);
+    line-height: 40px;
     width: 34px;
-    font-family: "阿里汉仪智能黑体"
   }
 }
 </style>
