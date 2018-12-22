@@ -9,14 +9,20 @@
       <disabe></disabe>
     </span>
     <ul>
-      <li>仅90天等待期，</li>
-      <li>仅90天等待期，保障责任更全 小投入高杠杆，150万保额免体检</li>
+      <li>
+        <img src="../../assets/home/point.svg" alt>
+        仅90天等待期，保障责任更全
+      </li>
+      <li>
+        <img src="../../assets/home/point.svg" alt> 小投入高杠杆，150万保额免体检
+      </li>
     </ul>
   </div>
 </template>
 <script>
 import able from "@/components/common/keep/index";
 import disabe from "@/components/common/keep/disable";
+import { Flexbox, FlexboxItem } from "vux";
 export default {
   props: {},
   data() {
@@ -24,7 +30,9 @@ export default {
   },
   components: {
     able,
-    disabe
+    disabe,
+     Flexbox,
+    FlexboxItem
   },
   methods: {
     goBack() {
@@ -72,6 +80,10 @@ export default {
     font-weight: 500;
     color: rgba(102, 102, 102, 1);
     line-height: 50px;
+    img {
+      width: 30px;
+      height: 30px;
+    }
   }
 }
 </style>
