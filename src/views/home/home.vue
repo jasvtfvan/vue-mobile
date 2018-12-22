@@ -6,9 +6,9 @@
     <vm-kind></vm-kind>
     <vm-range></vm-range>
 
-    <vm-fixed-btn></vm-fixed-btn>
-    <anchor></anchor>
-    <!-- <intruducton></intruducton> -->
+    <!-- <vm-fixed-btn></vm-fixed-btn> -->
+    <!-- <anchor></anchor> -->
+    <intruducton></intruducton>
     <!-- <anchorNav></anchorNav> -->
     <div v-transfer-dom>
       <popup v-model="show1">
@@ -16,7 +16,7 @@
       </popup>
     </div>
 
-    <vm-footer :text="btntext" @onBtnClick="showpopup" :isPopup="show1"></vm-footer>
+    <!-- <vm-footer :text="btntext" @onBtnClick="showpopup" :isPopup="show1"></vm-footer> -->
   </div>
 </template>
 

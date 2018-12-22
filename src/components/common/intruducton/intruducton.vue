@@ -1,6 +1,6 @@
 <template>
   <div class="intruducton">
-    <ul>
+    <!-- <ul>
       <li>
         <a href="#1" class="active-a">产品介绍</a>
       </li>
@@ -13,11 +13,11 @@
       <li>
         <a href="#4">常见问题</a>
       </li>
-    </ul>
+    </ul> -->
     <div id="1">
-      <tab1></tab1>
+      <tab2></tab2>
     </div>
-    <div class="content2" id="2">
+    <!-- <div class="content2" id="2">
       <tab2></tab2>
     </div>
     <div class="content3" id="3">
@@ -25,7 +25,7 @@
     </div>
     <div class="content4" id="4">
       <tab4></tab4>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
@@ -48,9 +48,9 @@ export default {
 </script>
 <style lang="less" scoped>
 .intruducton {
-  margin: 36px 34px 36px 34px;
+  // margin: 36px 34px 36px 34px;
   ul li {
-    float: left;
+    // float: left;
     margin-left: 30px;
 
     a {

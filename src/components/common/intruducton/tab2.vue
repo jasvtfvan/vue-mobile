@@ -1,21 +1,15 @@
 <template>
   <div class="tab2">
-    <p class="title">购买须知</p>
     <ul>
-      <li>使用人群: 30天至50周岁</li>
-      <li>使用人群: 30天至50周岁</li>
-      <li>使用人群: 30天至50周岁</li>
-      <li>使用人群: 30天至50周岁</li>
+      <li>购买须知</li>
+      <li>保障年龄：30天-50周岁</li>
+      <li>保障期限：终身</li>
+      <li>交费方式：月/年交</li>
+      <li>交费年限：可选择10年、15年或20年交</li>
+      <li>查看《更多投保须知》《保险条款》</li>
+      <li>保险公司介绍</li>
+      <li>国华人寿保险股份有限公司成立于2007年11月，总部位于上海市地标建筑上海中心大厦,注册地湖北武汉。是由原中国保险监督管理委员会批准设立的全国性、股份制专业寿险公司，目前注册资本为38亿元。</li>
     </ul>
-    <div class="view">
-      查看
-      <a href="#"><<更多投保须知>></a>
-    </div>
-
-    <p class="company-title">保险公司介绍</p>
-    <p
-      class="company-content"
-    >国华人寿保险股份有限公司成立于2007年11月，总部位于上海市地标建筑上海中心大厦,注册地湖北武汉。是由原中国保险监督管理委员会批准设立的全国性、股份制专业寿险公司，目前注册资本为38亿元。</p>
   </div>
 </template>
 <script>
@@ -33,46 +27,56 @@ export default {
 </script>
 <style lang="less" scoped>
 .tab2 {
-  clear: both;
-  .title {
-    color: #444444;
-    font-size: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   ul li {
-    clear: both;
-    color: #888888;
-    font-size: 26px;
-  }
-
-  .view {
-    clear: both;
-    color: #4d8efa;
-    font-size: 28px;
-    padding-left: 30px;
-
-    a {
-      color: #4d8efa;
-      font-size: 28px;
-      font-weight: Medium;
+    &:nth-of-type(1) {
+      font-size: 44px;
+      font-family: PingFangSC-Medium;
+      font-weight: 500;
+      color: rgba(68, 68, 68, 1);
+      line-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 50px;
     }
-  }
 
-  .company-title {
-    color: #444444;
-    font-size: 34px;
-    font-weight: normal;
-    margin: 70px 0 20px 33px;
-  }
+    &:nth-of-type(2),
+    &:nth-of-type(3),
+    &:nth-of-type(4),
+    &:nth-of-type(5) {
+      font-size: 28px;
+      font-family: PingFangSC-Medium;
+      font-weight: 500;
+      color: rgba(136, 136, 136, 1);
+      line-height: 48px;
+      padding: 0 0 0 50px;
+    }
+    &:nth-of-type(6) {
+      font-size: 28px;
+      font-family: PingFangSC-Medium;
+      font-weight: 500;
+      color: rgba(77, 142, 250, 1);
+      line-height: 28px;
+      padding: 30px 0 0 50px;
+    }
 
-  .company-content {
-    color: #888888;
-    font-size: 28px;
-    font-weight: normal;
-    margin: 0 33px 0 33px;
+    &:nth-of-type(7) {
+      font-size: 34px;
+      font-family: PingFangSC-Medium;
+      font-weight: 500;
+      color: rgba(68, 68, 68, 1);
+      line-height: 48px;
+      padding: 50px 0 30px 50px;
+    }
+
+    &:nth-of-type(8) {
+      font-size: 28px;
+      font-family: PingFangSC-Medium;
+      font-weight: 500;
+      color: rgba(136, 136, 136, 1);
+      line-height: 48px;
+      padding: 0 50px 50px 50px;
+    }
   }
 }
 </style>
