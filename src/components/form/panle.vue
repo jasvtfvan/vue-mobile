@@ -204,7 +204,13 @@ export default {
           type: "text"
           // type: "warn"
         });
+
+        return;
       }
+
+      this.$router.push({
+        path: "/form"
+      });
     },
     //为谁投保
     getPerson() {
@@ -289,7 +295,6 @@ export default {
           }
         }
       }).then(res => {
-
         //获取最终计算结果
       });
 

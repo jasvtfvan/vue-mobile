@@ -15,7 +15,7 @@
       </flexbox-item>
       <flexbox-item :span="5">
         <div class="flex-demo right" @click="showpopup()">
-          <span>{{!isPopup?text:"去投保"}}</span>
+          <span>立即支付</span>
         </div>
       </flexbox-item>
     </flexbox>
@@ -55,18 +55,7 @@ export default {
     },
 
     showpopup() {
-      console.log(this.isPopup);
 
-      //去投保
-      if (this.isPopup) {
-        console.log("if");
-        this.$router.push({
-          path: "/health"
-        });
-      } else {
-        console.log("else");
-        this.$emit("onBtnClick");
-      }
     },
 
     goHomePage() {

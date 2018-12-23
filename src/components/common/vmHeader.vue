@@ -3,13 +3,15 @@
     <a class="btn-back iconfont" href="javascript:;" @click="goBack()">
       <i class="icon-back"></i>
     </a>
-    国民超级年金险
+    {{headerText}}
     <img src="../../assets/more.svg" style="width:25px;margin-right:5px">
   </header>
 </template>
 <script>
 export default {
-  props: {},
+  props: {
+     headerText: String,
+  },
   data() {
     return {};
   },

@@ -1,18 +1,24 @@
 <template>
-  <div class="fixed-btn">
+  <div class="fixed-btn" @click="showpopup">
     <span>保试</span>
     <span>费算</span>
   </div>
 </template>
 <script>
 export default {
-  props: {},
+  props: {
+    text: String,
+    isPopup: Boolean
+  },
   data() {
     return {};
   },
   methods: {
     goBack() {
       this.$router.go(-1);
+    },
+    showpopup() {
+      this.$emit("onBtnClick");
     }
   }
 };

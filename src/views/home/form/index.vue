@@ -1,6 +1,6 @@
 <template>
   <div class="form">
-    <vm-header></vm-header>
+    <vm-header :headerText="headerText"></vm-header>
 
     <div class="content">
       <div class="title">投保人信息</div>
@@ -9,7 +9,7 @@
           <div class="item-left">姓名</div>
         </flexbox-item>
         <flexbox-item :span="8">
-          <x-input placeholder="请输入姓名"></x-input>
+          <x-input placeholder="请输入投保人姓名" v-model="part1.name"></x-input>
         </flexbox-item>
       </flexbox>
       <flexbox class="flex=box row">
@@ -17,15 +17,18 @@
           <div class="item-left">身份证号</div>
         </flexbox-item>
         <flexbox-item :span="8">
-          <x-input placeholder="请输身份证号"></x-input>
+          <x-input placeholder="请输投保人身份证号" v-model="part1.number"></x-input>
         </flexbox-item>
       </flexbox>
       <flexbox class="flex=box row">
         <flexbox-item :span="4">
           <div class="item-left">手机号</div>
         </flexbox-item>
-        <flexbox-item :span="8">
-          <x-input placeholder="请输手机号"></x-input>
+        <flexbox-item :span="6">
+          <x-input placeholder="请输入投保人手机号" v-model="part1.phone"></x-input>
+        </flexbox-item>
+        <flexbox-item :span="2">
+          <span class="item-left" @click="getCode">{{codeText}}</span>
         </flexbox-item>
       </flexbox>
       <flexbox class="flex=box row">
@@ -33,7 +36,7 @@
           <div class="item-left">验证码</div>
         </flexbox-item>
         <flexbox-item :span="8">
-          <x-input placeholder="请输验证码"></x-input>
+          <x-input placeholder="请输入验证码" v-model="part1.code"></x-input>
         </flexbox-item>
       </flexbox>
       <flexbox class="flex=box row">
@@ -41,7 +44,7 @@
           <div class="item-left">电子邮箱</div>
         </flexbox-item>
         <flexbox-item :span="8">
-          <x-input placeholder="请电子邮箱"></x-input>
+          <x-input placeholder="请输入电子邮箱" v-model="part1.email"></x-input>
         </flexbox-item>
       </flexbox>
       <flexbox class="flex=box row">
@@ -49,7 +52,7 @@
           <div class="item-left">详细地址</div>
         </flexbox-item>
         <flexbox-item :span="8">
-          <x-input placeholder="详细地址"></x-input>
+          <x-input placeholder="请输入详细地址" v-model="part1.address"></x-input>
         </flexbox-item>
       </flexbox>
       <div class="title">被保人信息</div>
@@ -73,7 +76,7 @@
           <div class="item-left">姓名</div>
         </flexbox-item>
         <flexbox-item :span="8">
-          <x-input placeholder="请输入姓名"></x-input>
+          <x-input placeholder="请输入被保人姓名" v-model="part2.name"></x-input>
         </flexbox-item>
       </flexbox>
       <flexbox class="flex=box row">
@@ -81,7 +84,7 @@
           <div class="item-left">身份证号</div>
         </flexbox-item>
         <flexbox-item :span="8">
-          <x-input placeholder="身份证号"></x-input>
+          <x-input placeholder="请输入被保人身份证号" v-model="part2.number"></x-input>
         </flexbox-item>
       </flexbox>
       <flexbox class="flex=box row" style="margin-bottom: 10px">
@@ -89,7 +92,7 @@
           <div class="item-left">受益人</div>
         </flexbox-item>
         <flexbox-item :span="8">
-          <x-input placeholder="受益人"></x-input>
+          <x-input placeholder="请输入受益人" v-model="part2.person"></x-input>
         </flexbox-item>
       </flexbox>
 
@@ -98,7 +101,7 @@
           <div class="item-left">银行卡号</div>
         </flexbox-item>
         <flexbox-item :span="8">
-          <x-input placeholder="银行卡号"></x-input>
+          <x-input placeholder="请输入银行卡号" v-model="part2.bank"></x-input>
         </flexbox-item>
       </flexbox>
       <div class="title">保障计划</div>
@@ -145,11 +148,11 @@
       </flexbox>
 
       <flexbox class="flex=box row" style="margin-bottom: 10px">
-        <flexbox-item :span="4">
+        <flexbox-item :span="3">
           <div class="item-left">购买份数</div>
         </flexbox-item>
-        <flexbox-item :span="5">
-          <x-number></x-number>
+        <flexbox-item :span="6">
+          <x-number v-model="count"></x-number>
         </flexbox-item>
         <flexbox-item :span="3">500元/份</flexbox-item>
       </flexbox>
@@ -160,7 +163,11 @@
         </flexbox-item>
         <flexbox-item :span="8">
           <div class="item-left group-btn-cell">
-            <span  style="color:#F85C58">599.37元/月</span>至终身
+            <span
+              style="color:#F85C58"
+            >{{this.getPayType()==="P0000016_1"?500*this.count:1000*this.count}}元/
+            {{this.getPayType()==="P0000016_1"?'月':'年'}}
+            </span>至终身
           </div>
         </flexbox-item>
       </flexbox>
@@ -181,7 +188,28 @@
 
       <flexbox class="flex=box">
         <flexbox-item :span="12">
-          <vm-footer :text="btntext" @onBtnClick="showpopup"></vm-footer>
+          <!-- <vm-footer :text="btntext" @onBtnClick="showpopup"></vm-footer> -->
+          <footer class="vm-1px-t">
+            <flexbox>
+              <flexbox-item :span="2">
+                <div class="custome">
+                  <img src="../../../assets/custom.jpg" alt>
+                  <p class="custome">客服</p>
+                </div>
+              </flexbox-item>
+              <flexbox-item :span="5">
+                <div class="flex-demo left">
+                  <span>￥{{this.getPayType()==="P0000016_1"?500*this.count:1000*this.count}}</span>
+                  <span> {{this.getPayType()==="P0000016_1"?'/月起':'/年起'}}</span>
+                </div>
+              </flexbox-item>
+              <flexbox-item :span="5">
+                <div class="flex-demo right" @click="onSubmit">
+                  <span>立即支付</span>
+                </div>
+              </flexbox-item>
+            </flexbox>
+          </footer>
         </flexbox-item>
       </flexbox>
     </div>
@@ -193,6 +221,15 @@ import vmHeader from "@/components/common/vmHeader";
 import VmFooter from "./vmFooter";
 import { Flexbox, FlexboxItem, Datetime, XNumber, XInput } from "vux";
 import _ from "lodash";
+import {
+  patternFn,
+  testNumber,
+  testPhone,
+  testEmail,
+  luhnCheck
+} from "@/utils/utils";
+import { $vux } from "@/main";
+import { throws } from "assert";
 export default {
   components: {
     Flexbox,
@@ -206,8 +243,10 @@ export default {
   props: {},
   data() {
     return {
+      headerText: "填写投保信息",
       btntext: "立即投保",
       time1: "请选择被保人年龄",
+      count: 1,
       item: [
         {
           key: "本人",
@@ -238,20 +277,258 @@ export default {
         }
       ],
       item3: [
-        {
-          key: "月缴",
-          value: "",
-          isactive: true
-        },
-        {
-          key: "年缴",
-          value: "",
-          isactive: false
-        }
-      ]
+        { key: "月缴", value: "P0000016_1", isactive: true },
+        { key: "年缴", value: "P0000016_2", isactive: false }
+      ],
+
+      //投保人
+      part1: {
+        name: "",
+        number: "",
+        phone: "",
+        code: "",
+        email: "",
+        address: ""
+      },
+
+      //被保人
+      part2: {
+        name: "",
+        number: "",
+        person: "", //受益人
+        bank: "",
+        target: "" //为谁投保
+      },
+
+      //保障计划
+      plan: {
+        // item:"1000Y",//productPeriod: "1000Y",
+        // item2:this.getTerm(),
+        // item3:this.getPayType(),
+        // item4:this.buyCount
+
+        item: "1000Y", //productPeriod: "1000Y",
+        item2: "",
+        item3: "",
+        item4: ""
+      },
+      countdown: 60,
+      codeText: "验证码"
     };
   },
   methods: {
+    //交费方式
+    getPayType() {
+      let result = "";
+      _.forEach(this.item3, val => {
+        if (val.isactive) {
+          result = val.value;
+        }
+      });
+
+      return result;
+    },
+    //获取交费期限
+    getTerm() {
+      let result = "";
+      _.forEach(this.item2, val => {
+        if (val.isactive) {
+          result = val.value;
+        }
+      });
+
+      return result;
+    },
+    settime() {
+      if (this.countdown == 0) {
+        this.codeText = "验证码";
+        this.countdown = 60;
+        return;
+      } else {
+        this.codeText = this.countdown + "s";
+        this.countdown--;
+      }
+      setTimeout(() => {
+        this.settime();
+      }, 1000);
+    },
+    getCode() {
+      if (!this.part1.phone) {
+        $vux.toast.show({
+          text: "请输入投保人手机号",
+          type: "text"
+        });
+        return;
+      } else {
+        if (testPhone(this.part1.phone)) {
+          $vux.toast.show({
+            text: "手机号格式不正确",
+            type: "text"
+          });
+          return;
+        }
+      }
+
+      this.settime();
+    },
+    onSubmit() {
+      console.log(this.plan);
+      return;
+      if (!this.part1.name) {
+        $vux.toast.show({
+          text: "请输入投保人姓名",
+          type: "text"
+        });
+        return;
+      } else {
+        if (!patternFn(this.part1.name)) {
+          $vux.toast.show({
+            text: "请输入真实姓名",
+            type: "text"
+          });
+          return;
+        }
+      }
+
+      if (!this.part1.number) {
+        $vux.toast.show({
+          text: "请输投保人身份证号",
+          type: "text"
+        });
+        return;
+      } else {
+        let number = testNumber(this.part1.number);
+        if (number.status != 1) {
+          $vux.toast.show({
+            text: number.msg,
+            type: "text"
+          });
+          return;
+        }
+      }
+
+      if (!this.part1.phone) {
+        $vux.toast.show({
+          text: "请输入投保人手机号",
+          type: "text"
+        });
+        return;
+      } else {
+        if (testPhone(this.part1.phone)) {
+          $vux.toast.show({
+            text: "手机号格式不正确",
+            type: "text"
+          });
+          return;
+        }
+      }
+
+      if (!this.part1.code) {
+        $vux.toast.show({
+          text: "请输入验证码",
+          type: "text"
+        });
+        return;
+      }
+
+      if (!this.part1.email) {
+        $vux.toast.show({
+          text: "请输入电子邮箱",
+          type: "text"
+        });
+        return;
+      } else {
+        if (!testEmail(this.part1.email)) {
+          $vux.toast.show({
+            text: "邮箱格式不正确",
+            type: "text"
+          });
+          return;
+        }
+      }
+
+      if (!this.part1.address) {
+        $vux.toast.show({
+          text: "请输入详细地址",
+          type: "text"
+        });
+        return;
+      }
+
+      if (!this.part2.name) {
+        $vux.toast.show({
+          text: "请输入被保人姓名",
+          type: "text"
+        });
+        return;
+      }
+
+      if (!this.part2.name) {
+        $vux.toast.show({
+          text: "请输入被保人姓名",
+          type: "text"
+        });
+        return;
+      } else {
+        if (!patternFn(this.part2.name)) {
+          $vux.toast.show({
+            text: "请输入真实姓名",
+            type: "text"
+          });
+          return;
+        }
+      }
+
+      if (!this.part2.number) {
+        $vux.toast.show({
+          text: "请输入被保人身份证号",
+          type: "text"
+        });
+        return;
+      }
+
+      if (!this.part2.number) {
+        $vux.toast.show({
+          text: "请输入被保人身份证号",
+          type: "text"
+        });
+        return;
+      } else {
+        let number = testNumber(this.part2.number);
+        if (number.status != 1) {
+          $vux.toast.show({
+            text: number.msg,
+            type: "text"
+          });
+          return;
+        }
+      }
+
+      if (!this.part2.person) {
+        $vux.toast.show({
+          text: "请输入受益人",
+          type: "text"
+        });
+        return;
+      }
+
+      if (!this.part2.bank) {
+        $vux.toast.show({
+          text: "请输入银行卡号",
+          type: "text"
+        });
+        return;
+      } else {
+        if (!luhnCheck(this.part2.bank)) {
+          $vux.toast.show({
+            text: "银行卡号格式不正确",
+            type: "text"
+          });
+          //this.part2.bank="";
+          return;
+        }
+      }
+    },
     goBack() {
       this.$router.go(-1);
     },
@@ -300,7 +577,7 @@ export default {
     font-weight: 500;
     color: rgba(51, 51, 51, 1);
     line-height: 56px;
-    padding: 30px 0 30px 25px;
+    padding: 30px 0 30px 5px;
   }
 
   .item-left {
@@ -388,6 +665,82 @@ export default {
 
   .group-btn-cell {
     padding: 0 0 15px 0;
+  }
+
+  footer {
+    width: 100%;
+    // position: fixed;
+    height: 110px;
+    // left: 0;
+    // bottom: 0;
+    z-index: 999;
+    background: #fff;
+    display: flex;
+    align-items: center;
+
+    .custome {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin: 17px 0 7px 10px;
+      justify-content: center;
+      text-align: center;
+      // padding: 10px 0;
+      img {
+        width: 45px;
+        height: 45px;
+        position: relative;
+        top: 8px;
+      }
+      p {
+        font-size: 22px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        color: rgba(119, 126, 143, 1);
+        // line-height: 30px;
+      }
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        font-size: 60px;
+        font-family: PingFangSC-Medium;
+        font-weight: 500;
+        line-height: 84px;
+      }
+      span:nth-child(1) {
+        color: rgba(248, 92, 88, 1);
+      }
+
+      span:nth-child(2) {
+        font-size: 24px;
+        color: rgba(136, 136, 136, 1);
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 110px;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 185, 0, 0.9) 0%,
+        rgba(254, 131, 0, 0.8) 100%
+      );
+
+      span {
+        font-size: 36px;
+        font-family: PingFangSC-Medium;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 1);
+        line-height: 34px;
+      }
+    }
   }
 }
 </style>

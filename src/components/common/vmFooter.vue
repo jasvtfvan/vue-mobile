@@ -56,17 +56,18 @@ export default {
 
     showpopup() {
       console.log(this.isPopup);
+      this.$emit("onBtnClick");
 
       //去投保
-      if (this.isPopup) {
-        console.log("if");
-        this.$router.push({
-          path: "/health"
-        });
-      } else {
-        console.log("else");
-        this.$emit("onBtnClick");
-      }
+      // if (this.isPopup) {
+      //   console.log("if");
+      //   this.$router.push({
+      //     path: "/health"
+      //   });
+      // } else {
+      //   console.log("else");
+      //   this.$emit("onBtnClick");
+      // }
     },
 
     goHomePage() {

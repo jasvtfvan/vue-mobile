@@ -1,15 +1,15 @@
 <template>
   <div class="home">
-    <vm-header></vm-header>
+    <vm-header :headerText="headerText"></vm-header>
     <vm-banner></vm-banner>
     <vm-feature></vm-feature>
     <vm-kind></vm-kind>
     <vm-range></vm-range>
 
-    <vm-fixed-btn></vm-fixed-btn>
+    <vm-fixed-btn @onBtnClick="showpopup" :isPopup="show1"></vm-fixed-btn>
     <anchor></anchor>
     <intruducton></intruducton>
-    <anchorNav></anchorNav>
+    <!-- <anchorNav></anchorNav> -->
     <div v-transfer-dom>
       <popup v-model="show1">
         <panle></panle>
@@ -62,8 +62,9 @@ export default {
       exitStyle: {
         background: "#00beda"
       },
-      show1: true,
-      btntext: "立即投保"
+      show1: false,
+      btntext: "立即投保",
+      headerText:"国民超级年金险"
     };
   },
   watch: {
