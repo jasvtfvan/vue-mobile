@@ -16,7 +16,7 @@
       </popup>
     </div>
 
-    <vm-footer :text="btntext" @onBtnClick="showpopup" :isPopup="show1"></vm-footer>
+    <!-- <vm-footer :text="btntext" @onBtnClick="showpopup" :isPopup="show1"></vm-footer> -->
   </div>
 </template>
 
@@ -62,7 +62,7 @@ export default {
       exitStyle: {
         background: "#00beda"
       },
-      show1: false,
+      show1: true,
       btntext: "立即投保"
     };
   },

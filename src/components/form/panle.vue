@@ -23,7 +23,6 @@
         </flexbox-item>
         <flexbox-item :span="9">
           <datetime
-            title
             v-model="datevalue"
             :placeholder="time1"
             value-text-align="left"
@@ -76,23 +75,25 @@
       </flexbox>
 
       <flexbox class="flex=box row" style="margin-bottom: 10px">
-        <flexbox-item :span="3">
+        <flexbox-item :span="2">
           <div class="item-left">购买份数</div>
         </flexbox-item>
-        <flexbox-item :span="5">
+        <flexbox-item :span="6">
           <x-number v-model="count"></x-number>
         </flexbox-item>
         <flexbox-item :span="3">{{isMonthorYear =="P0000016_1"?500:1000}}元/份</flexbox-item>
       </flexbox>
 
-      <flexbox class="flex=box row" style="margin-bottom: 10px">
+      <flexbox class="flex=box row" style="margin-bottom: 10px" v-show="age">
         <flexbox-item :span="3">
           <div class="item-left">领取年金</div>
         </flexbox-item>
         <flexbox-item :span="9">
           <div class="group-btn-cell">
             <div class="item-left item-left-year">
-              <span style="color:#F85C58">599.37元/月</span>
+              <span
+                style="color:#F85C58"
+              >{{this.getPayType()==="P0000016_1"?500*this.count:1000*this.count}}元/月</span>
               至终身
             </div>
           </div>
@@ -100,11 +101,14 @@
       </flexbox>
     </div>
 
-    <flexbox class="flex=box" style="margin-bottom: 10px">
+    <flexbox class="flex=box" style="margin-bottom: 10px" v-show="age">
       <flexbox-item :span="12">
         <ul class="ul-description">
           <li>您将获得的保障利益是：</li>
-          <li>1.每年交1000元，交费满5年后开始领取，每年领取599.37元至终身，若不领取则自动进入累计生息账户；</li>
+          <li>
+            1.{{this.getPayType()==="P0000016_1"?'每月交500元':'每年交1000元'}}，交费满5年后开始领取，
+            每{{this.getPayType()==="P0000016_1"?'月':'年'}}领取{{this.getPayType()==="P0000016_1"?500*this.count:1000*this.count}}元至终身，若不领取则自动进入累计生息账户；
+          </li>
           <li>2.保障期限内，若被保险人不幸身故，将返还现金价值与已交保险费的较大者给法定受益人。</li>
         </ul>
       </flexbox-item>
@@ -112,7 +116,28 @@
 
     <flexbox class="flex=box">
       <flexbox-item :span="12">
-        <vm-footer :text="btntext" :isPopup="show1"></vm-footer>
+        <!-- <vm-footer :text="btntext" :isPopup="show1" @click="onSubmit"></vm-footer> -->
+        <footer class="vm-1px-t">
+          <flexbox>
+            <flexbox-item :span="2">
+              <div class="custome">
+                <img src="../../assets/custom.jpg" alt>
+                <p class="custome">客服</p>
+              </div>
+            </flexbox-item>
+            <flexbox-item :span="5">
+              <div class="flex-demo left">
+                <span>￥{{this.getPayType()==="P0000016_1"?500:1000}}</span>
+                <span>/{{this.getPayType()==="P0000016_1"?'月':'年'}}起</span>
+              </div>
+            </flexbox-item>
+            <flexbox-item :span="5">
+              <div class="flex-demo right" @click="onSubmit">
+                <span>去投保</span>
+              </div>
+            </flexbox-item>
+          </flexbox>
+        </footer>
       </flexbox-item>
     </flexbox>
   </div>
@@ -122,6 +147,7 @@ import VmFooter from "./vmFooter";
 import { Flexbox, FlexboxItem, Datetime, XNumber } from "vux";
 import _ from "lodash";
 import { getAges } from "@/utils/utils";
+import { $vux } from "@/main";
 import {
   calculation,
   getDetailByProductId,
@@ -144,7 +170,7 @@ export default {
   props: {},
   data() {
     return {
-      show1:"",
+      show1: "",
       time1: "请选择被保人年龄(18周岁-55周岁)",
       item: [
         { key: "本人", value: "0", isactive: true },
@@ -171,7 +197,74 @@ export default {
     goBack() {
       this.$router.go(-1);
     },
-    showdate() {
+    onSubmit() {
+      if (!this.datevalue) {
+        $vux.toast.show({
+          text: "请选择出身日期",
+          type: "text"
+          // type: "warn"
+        });
+      }
+    },
+    //为谁投保
+    getPerson() {
+      let result = "";
+      _.forEach(this.item, val => {
+        if (val.isactive) {
+          result = val.value;
+        }
+      });
+
+      return result;
+    },
+
+    //获取交费期限
+    getTerm() {
+      let result = "";
+      _.forEach(this.item2, val => {
+        if (val.isactive) {
+          result = val.value;
+        }
+      });
+
+      return result;
+    },
+
+    //交费方式
+    getPayType() {
+      let result = "";
+      _.forEach(this.item3, val => {
+        if (val.isactive) {
+          result = val.value;
+        }
+      });
+
+      return result;
+    },
+    getData() {
+      //为谁投保
+      // let person = this.getPerson();
+      // console.log(person);
+      //出生日期 即年龄
+      // console.log("年龄", this.age);
+
+      // console.log("交费期限", this.getTerm());
+      // console.log("交费方式", this.getPayType());
+      // console.log("购买份数", this.count);
+
+      // console.log("保费计算", {
+      //   sex: "0", //此产品固定值
+      //   productPeriod: "1000Y", //保障期限 此产品固定值
+      //   profession: "ALL", //此产品固定值
+      //   amount: this.getPayType() === "P0000016_1" ? 500 : 1000, //保额  月交 100 年 1000 此产品固定值
+      //   socialSecurity: "-1", // 此产品固定值
+
+      //   //动态获取值
+      //   age: this.age, //年龄 根据出生日期计算出来
+      //   paymentPeriod: this.getTerm(), //交费期限
+      //   productPlanId: this.getPayType()
+      // });
+
       //保费计算
       calculation({
         param: {
@@ -183,24 +276,80 @@ export default {
         data: {
           head: {},
           body: {
-            productPlanId: "P0000016_1", //缴费方式
-            sex: "0", //性别
-            age: 17, //年龄
-            productPeriod: "1000Y", //保障期限
-            paymentPeriod: "10Y", //缴费期限
-            profession: "ALL",
-            amount: 1000, //保额  月交 100 年 1000
-            socialSecurity: "-1"
+            sex: "0", //此产品固定值
+            productPeriod: "1000Y", //保障期限 此产品固定值
+            profession: "ALL", //此产品固定值
+            amount: this.getPayType() === "P0000016_1" ? 500 : 1000, //保额  月交 100 年 1000 此产品固定值
+            socialSecurity: "-1", // 此产品固定值
+
+            //动态获取值
+            age: this.age, //年龄 根据出生日期计算出来
+            paymentPeriod: this.getTerm(), //交费期限
+            productPlanId: this.getPayType()
           }
         }
+      }).then(res => {
+
+        //获取最终计算结果
       });
+
+      //保障期限
+      // productPeriod: "1000Y"
+
+      //  {
+      //       productPlanId: "P0000016_1", //缴费方式
+      //       sex: "0", //性别
+      //       age: 17, //年龄
+      //       productPeriod: "1000Y", //保障期限
+      //       paymentPeriod: "10Y", //缴费期限
+      //       profession: "ALL",
+      //       amount: 1000, //保额  月交 100 年 1000
+      //       socialSecurity: "-1"
+      //     }
+
+      // return {
+      //   sex: "0", //此产品固定值
+      //   productPeriod: "1000Y", //保障期限 此产品固定值
+      //   profession: "ALL", //此产品固定值
+      //   amount: 1000, //保额  月交 100 年 1000 此产品固定值
+      //   socialSecurity: "-1", // 此产品固定值
+
+      //   //动态获取值
+      //   age: this.age, //年龄 根据出生日期计算出来
+      //   paymentPeriod: this.getTerm(), //交费期限
+      //   productPlanId:this.getPayType()
+      // };
+    },
+    showdate() {
+      // //保费计算
+      // calculation({
+      //   param: {
+      //     interface: "100146",
+      //     system: "S10000051",
+      //     mode: "",
+      //     sessionId: ""
+      //   },
+      //   data: {
+      //     head: {},
+      //     body: {
+      //       productPlanId: "P0000016_1", //缴费方式
+      //       sex: "0", //性别
+      //       age: 17, //年龄
+      //       productPeriod: "1000Y", //保障期限
+      //       paymentPeriod: "10Y", //缴费期限
+      //       profession: "ALL",
+      //       amount: 1000, //保额  月交 100 年 1000
+      //       socialSecurity: "-1"
+      //     }
+      //   }
+      // });
     },
     getAge(val) {
       // console.log(val);
       // console.log(getAges(val));
       this.age = getAges(val);
 
-      console.log(this.age);
+      this.getData();
 
       //本产品投保年龄：28天-55周岁（10年交），28天-50周岁（15年交），28天-45周岁（20年交）；
 
@@ -240,6 +389,7 @@ export default {
             value.isactive = true;
           } else {
             value.isactive = false;
+            //this.datevalue="";
           }
 
           if (value.isactive && value.value === "0") {
@@ -278,6 +428,8 @@ export default {
           }
         });
       }
+
+      this.getData();
     }
   },
   mounted() {
@@ -461,28 +613,28 @@ export default {
     //   }
     // });
     //getBankList
-    getBankList({
-      param: {
-        interface: "100159",
-        system: "S10000051",
-        mode: "",
-        sessionId: ""
-      },
-      data: {
-        head: {
-          timeStamp: "",
-          systemId: "",
-          MD5: "",
-          extTransactionNo: "",
-          localTransactionNo: "",
-          errorCode: "",
-          errorMessage: ""
-        },
-        body: {
-          productId: "P0000016"
-        }
-      }
-    });
+    // getBankList({
+    //   param: {
+    //     interface: "100159",
+    //     system: "S10000051",
+    //     mode: "",
+    //     sessionId: ""
+    //   },
+    //   data: {
+    //     head: {
+    //       timeStamp: "",
+    //       systemId: "",
+    //       MD5: "",
+    //       extTransactionNo: "",
+    //       localTransactionNo: "",
+    //       errorCode: "",
+    //       errorMessage: ""
+    //     },
+    //     body: {
+    //       productId: "P0000016"
+    //     }
+    //   }
+    // });
   }
 };
 </script>
@@ -580,6 +732,82 @@ export default {
 
   .group-btn-cell {
     padding: 0 0 17px 0;
+  }
+
+  footer {
+    width: 100%;
+    position: fixed;
+    height: 110px;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    background: #fff;
+    display: flex;
+    align-items: center;
+
+    .custome {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin: 17px 0 7px 10px;
+      justify-content: center;
+      text-align: center;
+      // padding: 10px 0;
+      img {
+        width: 45px;
+        height: 45px;
+        position: relative;
+        top: 8px;
+      }
+      p {
+        font-size: 22px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        color: rgba(119, 126, 143, 1);
+        // line-height: 30px;
+      }
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        font-size: 60px;
+        font-family: PingFangSC-Medium;
+        font-weight: 500;
+        line-height: 84px;
+      }
+      span:nth-child(1) {
+        color: rgba(248, 92, 88, 1);
+      }
+
+      span:nth-child(2) {
+        font-size: 24px;
+        color: rgba(136, 136, 136, 1);
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 110px;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 185, 0, 0.9) 0%,
+        rgba(254, 131, 0, 0.8) 100%
+      );
+
+      span {
+        font-size: 36px;
+        font-family: PingFangSC-Medium;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 1);
+        line-height: 34px;
+      }
+    }
   }
 }
 </style>
