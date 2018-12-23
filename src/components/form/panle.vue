@@ -31,6 +31,7 @@
             @on-change="getAge(datevalue)"
             @on-show="showdate"
           ></datetime>
+          
         </flexbox-item>
       </flexbox>
       <flexbox class="flex=box row" style="margin-bottom: 10px">

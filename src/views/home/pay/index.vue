@@ -1,6 +1,6 @@
 <template>
   <div class="pay">
-    <vm-header></vm-header>
+    <vm-header :headerText="headerText"></vm-header>
     <flexbox>
       <flexbox-item :span="12" class="row">
         <div class="titile">国民超级年金险</div>
@@ -75,7 +75,8 @@
     </flexbox>
     <flexbox>
       <flexbox-item>
-        <vm-footer></vm-footer>
+        <!-- <vm-footer></vm-footer> -->
+        <div class="pay-footer" @click="onSubmit">确认支付</div>
       </flexbox-item>
     </flexbox>
   </div>
@@ -85,9 +86,36 @@
 import vmHeader from "@/components/common/vmHeader";
 import vmFooter from "./footer";
 import { Flexbox, FlexboxItem, XInput } from "vux";
+import { getBankList } from "@/apis/modules/home";
 export default {
+  mounted() {
+    // getBankList({
+    //   param: {
+    //     interface: "100159",
+    //     system: "S10000051",
+    //     mode: "",
+    //     sessionId: ""
+    //   },
+    //   data: {
+    //     head: {
+    //       timeStamp: "",
+    //       systemId: "",
+    //       MD5: "",
+    //       extTransactionNo: "",
+    //       localTransactionNo: "",
+    //       errorCode: "",
+    //       errorMessage: ""
+    //     },
+    //     body: {
+    //       productId: "P0000016"
+    //     }
+    //   }
+    // });
+  },
   data: function() {
-    return {};
+    return {
+      headerText: "支付信息"
+    };
   },
   components: {
     vmHeader,
@@ -95,6 +123,15 @@ export default {
     FlexboxItem,
     XInput,
     vmFooter
+  },
+  methods: {
+    onSubmit() {
+      // 确认支付接口 (100149)国华支付出单
+      // 成功之后跳转
+      //   this.$router.push({
+      //   path: "/result"
+      // });
+    }
   }
 };
 </script>
@@ -163,6 +200,28 @@ export default {
     color: rgba(153, 153, 153, 1);
     line-height: 40px;
     padding: 7px 0 0 0;
+  }
+
+  .pay-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 110px;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 185, 0, 0.9) 0%,
+      rgba(254, 131, 0, 0.8) 100%
+    );
+    color: #ffffff;
+    font-size: 36px;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    line-height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 </style>

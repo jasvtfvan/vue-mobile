@@ -163,10 +163,9 @@
         </flexbox-item>
         <flexbox-item :span="8">
           <div class="item-left group-btn-cell">
-            <span
-              style="color:#F85C58"
-            >{{this.getPayType()==="P0000016_1"?500*this.count:1000*this.count}}元/
-            {{this.getPayType()==="P0000016_1"?'月':'年'}}
+            <span style="color:#F85C58">
+              {{this.getPayType()==="P0000016_1"?500*this.count:1000*this.count}}元/
+              {{this.getPayType()==="P0000016_1"?'月':'年'}}
             </span>至终身
           </div>
         </flexbox-item>
@@ -174,15 +173,16 @@
 
       <flexbox class="flex=box" style="margin-bottom: 10px">
         <flexbox-item :span="1">
-          <div class="aggree">
-            <img src="../../../assets/agree/agree.svg" alt>
+          <div class="aggree" @click="agree=!agree;">
+            <img src="../../../assets/agree/agree.svg" alt v-if="agree">
+            <img src="../../../assets/agree/disagree.svg" alt v-else>
           </div>
         </flexbox-item>
 
         <flexbox-item :span="11">
           <p
             style="color:#666666;font-size:14px;margin-right:10px"
-          >我已阅读并同意《保险条款》《投保须知》《人身保险投保提示书》和《平台服务协议》</p>
+          >我已阅读并同意《投保须知》《人身保险投保提示书》和《平台服务协议》</p>
         </flexbox-item>
       </flexbox>
 
@@ -200,7 +200,7 @@
               <flexbox-item :span="5">
                 <div class="flex-demo left">
                   <span>￥{{this.getPayType()==="P0000016_1"?500*this.count:1000*this.count}}</span>
-                  <span> {{this.getPayType()==="P0000016_1"?'/月起':'/年起'}}</span>
+                  <span>{{this.getPayType()==="P0000016_1"?'/月起':'/年起'}}</span>
                 </div>
               </flexbox-item>
               <flexbox-item :span="5">
@@ -230,6 +230,7 @@ import {
 } from "@/utils/utils";
 import { $vux } from "@/main";
 import { throws } from "assert";
+import { orderSave } from "@/apis/modules/home";
 export default {
   components: {
     Flexbox,
@@ -246,6 +247,7 @@ export default {
       headerText: "填写投保信息",
       btntext: "立即投保",
       time1: "请选择被保人年龄",
+      agree: false,
       count: 1,
       item: [
         {
@@ -372,8 +374,6 @@ export default {
       this.settime();
     },
     onSubmit() {
-      console.log(this.plan);
-      return;
       if (!this.part1.name) {
         $vux.toast.show({
           text: "请输入投保人姓名",
@@ -528,6 +528,75 @@ export default {
           return;
         }
       }
+
+      if (!this.agree) {
+        $vux.toast.show({
+          text: "请选择同意",
+          type: "text"
+        });
+        return;
+      }
+
+      //核保
+      //orderSave
+
+      // 核保成功跳转支付页面
+      //   this.$router.push({
+      //   path: "/pay"
+      // });
+
+      // orderSave({
+      //   param: {
+      //     interface: "100132",
+      //     system: "S10000051",
+      //     mode: "",
+      //     sessionId: ""
+      //   },
+      //   data: {
+      //     head: {
+      //       platform: "ABX",
+      //       timeStamp: "",
+      //       extTransactionNo: "",
+      //       localTransactionNo: "",
+      //       systemId: "S10000051",
+      //       MD5: "",
+      //       errorCode: "0000",
+      //       errorMessage: "成功"
+      //     },
+      //     body: {
+      //       applicant: {
+      //         userId: "b2676359bb364e15897e95e28e643946",
+      //         idName: "韩艳磊",
+      //         idType: "01",
+      //         idNo: "342201198303063033",
+      //         idExpireDate: "9999-12-31",
+      //         mobile: "13811950048",
+      //         email: "zhaowei_2013@sina.com",
+      //         province: "350000",
+      //         city: "350100",
+      //         area: "350102",
+      //         address: "picc大厦18层"
+      //       },
+      //       insuredUser: {
+      //         userId: "b2676359bb364e15897e95e28e643946",
+      //         birthday: "1990-06-15",
+      //         sex: "1",
+      //         profession: "2022111",
+      //         relationType: "0"
+      //       },
+      //       product: {
+      //         productId: "P0000001",
+      //         productPlanId: "P0000001_1",
+      //         productName: "优爱宝定期寿险",
+      //         insuYear: "20Y",
+      //         amout: 300000,
+      //         premium: 396,
+      //         payIntv: "12",
+      //         payPeriod: "20Y"
+      //       }
+      //     }
+      //   }
+      // });
     },
     goBack() {
       this.$router.go(-1);

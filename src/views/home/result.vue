@@ -1,6 +1,6 @@
 <template>
   <div class="health">
-    <vm-header></vm-header>
+    <vm-header :headerText="headerText">></vm-header>
     <flexbox>
       <flexbox-item :span="12">
         <div class="flex-item1">
@@ -65,7 +65,9 @@ export default {
   },
   props: {},
   data() {
-    return {};
+    return {
+      headerText:"投保成功"
+    };
   },
   methods: {
     goBack() {

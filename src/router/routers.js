@@ -1,10 +1,9 @@
-const Login = resolve => require(["@/views/login/login"], resolve);
+
 const Home = resolve => require(["@/views/home/home"], resolve);
-const Health = resolve => require(["@/views/home/health/health"], resolve);
+// const Health = resolve => require(["@/views/home/health/health"], resolve);
 const Pay = resolve => require(["@/views/home/pay/index"], resolve);
 const Form = resolve => require(["@/views/home/form/index"], resolve);
 const Result = resolve => require(["@/views/home/result"], resolve);
-const VwLayout = resolve => require(["@/views/vwlayout/vwLayout"], resolve);
 
 export default [
   {
@@ -33,22 +32,31 @@ export default [
       isback: false
     }
   },
+  // {
+  //   path: "/health",
+  //   name: "Home",
+  //   component: Health,
+  //   meta: {
+  //     home: true,
+  //     isback: false
+  //   }
+  // },
   {
-    path: "/health",
-    name: "Home",
-    component: Health,
+    path: "/result",
+    name: "Result",
+    component: Result,
     meta: {
       home: true,
       isback: false
     }
   },
   {
-    path: "/vw",
-    name: "VwLayout",
-    component: VwLayout,
+    path: "/pay",
+    name: "Pay",
+    component: Pay,
     meta: {
-      white: true,
-      isback: true
+      home: true,
+      isback: false
     }
-  }
+  },
 ];
