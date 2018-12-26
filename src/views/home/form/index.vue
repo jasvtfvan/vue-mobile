@@ -180,16 +180,25 @@
         </flexbox-item>
 
         <flexbox-item :span="11">
-          <p
-            style="color:#666666;font-size:14px;margin-right:10px"
-          >我已阅读并同意《投保须知》《人身保险投保提示书》和《平台服务协议》</p>
+          <p style="color:#666666;font-size:14px;margin-right:10px">
+            我已阅读并同意《投保须知》《人身保险投保提示书》和
+            <span @click="show=true">《平台服务协议》</span>
+          </p>
         </flexbox-item>
       </flexbox>
+
+      <div v-transfer-dom>
+        <popup v-model="show" position="bottom" height="50%"  style=" background: #ffffff;">
+          <div>
+            <protocol></protocol>
+          </div>
+        </popup>
+      </div>
 
       <flexbox class="flex=box">
         <flexbox-item :span="12">
           <!-- <vm-footer :text="btntext" @onBtnClick="showpopup"></vm-footer> -->
-          <footer class="vm-1px-t">
+          <!-- <footer class="vm-1px-t">
             <flexbox>
               <flexbox-item :span="2">
                 <div class="custome">
@@ -209,7 +218,7 @@
                 </div>
               </flexbox-item>
             </flexbox>
-          </footer>
+          </footer> -->
         </flexbox-item>
       </flexbox>
     </div>
@@ -219,7 +228,16 @@
 <script>
 import vmHeader from "@/components/common/vmHeader";
 import VmFooter from "./vmFooter";
-import { Flexbox, FlexboxItem, Datetime, XNumber, XInput } from "vux";
+import protocol from "./protocol";
+import {
+  Flexbox,
+  FlexboxItem,
+  Datetime,
+  XNumber,
+  XInput,
+  TransferDom,
+  Popup
+} from "vux";
 import _ from "lodash";
 import {
   patternFn,
@@ -232,18 +250,24 @@ import { $vux } from "@/main";
 import { throws } from "assert";
 import { orderSave } from "@/apis/modules/home";
 export default {
+  directives: {
+    TransferDom
+  },
   components: {
+    protocol,
     Flexbox,
     FlexboxItem,
     Datetime,
     XNumber,
     vmHeader,
     XInput,
-    VmFooter
+    VmFooter,
+    Popup
   },
   props: {},
   data() {
     return {
+      show: false,
       headerText: "填写投保信息",
       btntext: "立即投保",
       time1: "请选择被保人年龄",
