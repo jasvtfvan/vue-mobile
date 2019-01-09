@@ -6,7 +6,8 @@ import router from '@/router'
 import store from '@/store/index'
 import FastClick from 'fastclick'
 import 'babel-polyfill'
-import { ToastPlugin, AlertPlugin } from 'vux'
+import { ToastPlugin, AlertPlugin } from 'vux';
+import VueGrid from '@liqueflies/vue-flex-grid'
 
 const mock = process.env.USER_MOCK
 if (mock) {
@@ -16,10 +17,11 @@ if (mock) {
 import 'vux/src/styles/reset.less'
 import '@/styles/index.less'
 
-// FastClick.attach(document.body)
+FastClick.attach(document.body);
 
 Vue.use(ToastPlugin)
 Vue.use(AlertPlugin)
+Vue.use(VueGrid);
 
 Vue.config.productionTip = false
 new Vue({
